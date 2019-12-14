@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="doLogin()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">
+          Correo
+        </ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">
+          Contraseña
+        </ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button [disabled]="form.invalid" type="submit">Acceder</ion-button>
+  </form>
+  <a (click)="goToRegisterPage()">Registrate</a>
+</ion-content>
