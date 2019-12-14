@@ -25,6 +25,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'retos',
+    loadChildren: () => import('./pages/retos/retos.module').then( m => m.RetosPageModule)
+  },
+  {
+    path: 'activities',
+    loadChildren: () => import('./pages/activities/activities.module').then( m => m.ActivitiesPageModule)
   }
 ];
 

@@ -27,9 +27,11 @@ export class RegisterPage implements OnInit {
   doRegister() {
     console.log(this.form.value);
     const value = this.form.value;
-    this.auth.register(value.email, value.password)
+    this.auth.register( value.email, value.password)
     .then((rta) => {
-      this.navCtrl.navigateRoot('schedule');
+
+      // Redirección una vez registrado
+      this.navCtrl.navigateRoot('home');
     })
     .catch(error => {
       console.log(error);
@@ -37,7 +39,12 @@ export class RegisterPage implements OnInit {
   }
 
   private buildForm() {
+
+    // Los únicos campos obligatorios son email y password
     this.form = this.fb.group({
+      firstName: [''],
+      lastName: [''],
+      stravaUID: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+// Formularios
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+
+// Para controlar la aparición del menu sólo si estás logeado
 import { MenuController, NavController } from '@ionic/angular';
 
 import { AuthService } from './../../services/auth.service';
@@ -25,7 +29,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    this.menuCtrl.enable(false);
+    // this.menuCtrl.enable(false);
   }
 
   async doLogin() {
@@ -33,13 +37,14 @@ export class LoginPage implements OnInit {
     const value = this.form.value;
     this.auth.login(value.email, value.password)
     .then ((rta) => {
-      //redirect
+      // redirect a la página principal
+      this.navCtrl.navigateForward('home');
     })
-    .catch(error =>{
+    .catch(error => {
       console.log (error);
     });
     // await this.fcm.getToken(rta.user.email);
-    // this.navCtrl.navigateForward('schedule');
+    this.navCtrl.navigateForward('home');
   }
 
   goToRegisterPage() {

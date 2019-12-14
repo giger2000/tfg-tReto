@@ -3,13 +3,37 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>register</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <form [formGroup]="form" (ngSubmit)="doRegister()">
     <ion-list>
+          <ion-item>
+            <ion-label position="stacked">
+              Nombre
+            </ion-label>
+            <ion-input formControlName="firstName"></ion-input>
+          </ion-item>
+   
+   
+            <ion-item>
+              <ion-label position="stacked">
+                Apellidos
+              </ion-label>
+              <ion-input formControlName="lastName"></ion-input>
+            </ion-item>
+         
+   
+              <ion-item>
+                <ion-label position="stacked">
+                  Usuario Strava
+                </ion-label>
+                <ion-input formControlName="stravaUID"></ion-input>
+              </ion-item>
+         
+      
       <ion-item>
         <ion-label position="stacked">
           Correo

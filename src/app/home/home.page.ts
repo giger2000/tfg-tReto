@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MenuController} from '@ionic/angular';
+
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+// Con menu controller gestionamos que el menú vuelva a aparecer una vez nos hemos logueado
+  constructor(
+    private menuCtrl: MenuController
+  ) {}
 
-  constructor() {}
+  ngOnInit() {
+    this.menuCtrl.enable(true);
+    
+  }
 
 }
