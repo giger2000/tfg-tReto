@@ -13,10 +13,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
 
   {
     path: 'register',
@@ -33,6 +29,10 @@ const routes: Routes = [
   {
     path: 'activities',
     loadChildren: () => import('./pages/activities/activities.module').then( m => m.ActivitiesPageModule)
+  },
+  {
+    path: 'retos-firebase',
+    loadChildren: () => import('./pages/retos-firebase/retos-firebase.module').then( m => m.RetosFirebasePageModule)
   }
 ];
 

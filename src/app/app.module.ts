@@ -21,6 +21,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // consumir datos externos
 import { HttpClientModule } from '@angular/common/http';
 
+// Para formato fechas
+import { LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     StatusBar,
+    {provide: LOCALE_ID, useValue:'es'},
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

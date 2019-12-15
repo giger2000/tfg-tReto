@@ -22,13 +22,18 @@ export class AppComponent {
     {
       title: 'Actividades',
       url: '/activities',
-      icon: 'list'
-    }
+      icon: 'bicycle'
+    },
     // {
-    //   title: 'Login',
-    //   url: '/login',
-    //   icon: 'list'
-    // }
+    //   title: 'Retos',
+    //   url: '/retos',
+    //   icon: 'cycle'
+    // },
+    {
+      title: 'Retos Fire',
+      url: '/retos-firebase',
+      icon: 'trophy'
+    }
   ];
 
   constructor(

@@ -15,14 +15,10 @@ export class ActivityService {
   constructor( private http: HttpClient) { }
 
   // Recupera los datos de un JSON local
-  //: Observable<Group[]>
+  
   getData() {
     return this.http.get('assets/data/activities.json');
-    // .pipe(
-    //   map((data: any) => {
-    //     return data.schedule[0].groups;
-    //   })
-    // );
+   
   }
 
 

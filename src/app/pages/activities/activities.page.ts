@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivityService } from './../../services/activity.service';
+import { MenuController} from '@ionic/angular';
 
 // Interfaces
 import { Actividad } from './../../interface/actividad';
@@ -15,13 +16,14 @@ export class ActivitiesPage implements OnInit {
   activities: Actividad[] = [];
 
   constructor(
-    private _activityService: ActivityService
+    private activityService: ActivityService
+    // private menuCtrl: MenuController
   ) { }
 
   ngOnInit() {
-
+    // this.menuCtrl.enable(true);
     // Utilizamos los datos del servicio, y con suscripción recuperamos todo.
-    this._activityService.getData()
+    this.activityService.getData()
     .subscribe( (data: any) => {
       const activities = data.actividades;
       this.activities = activities;
