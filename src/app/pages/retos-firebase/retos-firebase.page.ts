@@ -65,7 +65,7 @@ retosCollection: AngularFirestoreCollection<Reto>;
   }
 
   private addReto(name: string, dateStart: string, dateEnd: string) {
-    let myDateTemp = new Date(dateStart);
+    // let myDateTemp = new Date(dateStart);
     // dateStart = this.$retos.dateStart.toDate();
     const newReto: Reto = {
       name,

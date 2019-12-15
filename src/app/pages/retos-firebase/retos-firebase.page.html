@@ -23,7 +23,7 @@
               <ion-card-subtitle>
                   <ion-label>
                       <ion-icon name="calendar" slot="start"></ion-icon>
-                      <ion-label position="inline">{{ reto.dateStart.toDate() | date:'mediumDate' }}</ion-label>
+                      <ion-label position="inline">{{ reto.dateStart | date:'mediumDate' }}</ion-label>
                       <ion-label float-right>
                           <ion-badge *ngIf="reto.activo" color="success">Activo</ion-badge>
                           <ion-badge *ngIf="!reto.activo" color="danger">Desactivo</ion-badge>
