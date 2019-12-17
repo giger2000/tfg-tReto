@@ -65,7 +65,7 @@ retosCollection: AngularFirestoreCollection<Reto>;
   }
 
   private addReto(name: string, dateStart: string, dateEnd: string) {
- 
+
     const newReto: Reto = {
       name,
       dateStart: '',

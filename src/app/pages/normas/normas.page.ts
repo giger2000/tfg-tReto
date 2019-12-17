@@ -15,7 +15,7 @@ export class NormasPage implements OnInit {
 
 
   $normas: Observable<NormaModel[]>; // porque el array varía en tiempo real
-  normasCollection: AngularFirestoreCollection<Norma>;
+  normasCollection: AngularFirestoreCollection<NormaModel>;
 
   constructor(
     private db: AngularFirestore
