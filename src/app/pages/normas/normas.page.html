@@ -12,7 +12,7 @@
   
     <ion-card-header>
       <ion-card-subtitle>
-              <ion-label position="inline">{{ norma.deporte }}</ion-label>
+              <ion-label>{{ norma.deporte}}</ion-label>
      
     </ion-card-subtitle>  
 
@@ -21,25 +21,29 @@
       
     </ion-card-header>
     <ion-card-content>
-      <ion-label>{{ norma.minValor}}</ion-label>
-      <ion-label>Criterio</ion-label>
+      <ion-item>
+        <ion-label *ngIf='norma.criterio==="Desnivel"'>Mínimo:{{ norma.minValor}} .m </ion-label>
+        <ion-label *ngIf='norma.criterio==="Distancia"'>Mínimo:{{ norma.minValor}} .km </ion-label>
+        <ion-label *ngIf='norma.criterio==="Tiempo"'>Mínimo:{{ norma.minValor}} .s </ion-label>
+    </ion-item>
      <ion-item>
-         
-          <ion-select value={{norma.criterio}} interface="popover">
+      <ion-label>Criterio: {{norma.criterio}} </ion-label>
+    </ion-item>
+          <!-- <ion-select value={{norma.criterio}} interface="popover">
             <ion-select-option value="desnivel">Desnivel</ion-select-option>
             <ion-select-option value="distancio">Distancia</ion-select-option>
             <ion-select-option value="tiempo">Tiempo</ion-select-option>
             
-          </ion-select>
-      </ion-item>
-      <ion-label>Coeficiente</ion-label>
+          </ion-select> -->
       <ion-item>
+        <ion-label>Coeficiente: {{norma.coeficiente }}</ion-label>
+      </ion-item>
         
-        <ion-range min="0.0" max="3.0" pin step="0.1" value="1.0" snaps color="light">
+        <!-- <ion-range min="0.0" max="3.0" pin step="0.1" value="1.0" snaps color="light">
           <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon>
           <ion-icon slot="end" color="success" name="thermometer"></ion-icon>
-        </ion-range>
-      </ion-item>
+        </ion-range> -->
+     
     </ion-card-content>
   </ion-card>
 </ion-content>

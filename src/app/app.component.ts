@@ -72,7 +72,7 @@ export class AppComponent {
       let enable = false;
       if (session !== null) {
         enable = true;
-        this.navCtrl.navigateRoot('home');
+        this.navCtrl.navigateRoot('normas');
       }
       this.menuCtrl.enable(enable);
     });

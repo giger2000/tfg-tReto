@@ -8,6 +8,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-retos-firebase',
   templateUrl: './retos-firebase.page.html',
@@ -27,7 +28,12 @@ retosCollection: AngularFirestoreCollection<Reto>;
     // Trabajamos con Observable porque trabajamos en tiempo real
     this.retosCollection = this.db.collection<Reto>('retos');
     this.$retos = this.retosCollection.valueChanges();
-
+    
+    // Muesta la info de la consulta
+    const info = this.retosCollection.valueChanges()
+                .subscribe( resp => {
+                  console.log(resp[0].dateStart);
+                });
 
   }
 

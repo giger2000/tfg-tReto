@@ -29,4 +29,5 @@ export class NormasPage implements OnInit {
     console.log(this.$normas);
   }
 
+
 }
