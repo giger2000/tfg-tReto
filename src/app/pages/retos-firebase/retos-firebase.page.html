@@ -23,7 +23,7 @@
               <ion-card-subtitle>
                   <ion-label>
                       <ion-icon name="calendar" slot="start"></ion-icon>
-                      <ion-label position="inline">{{ reto.dateStart | date:'mediumDate' }}</ion-label>
+                      <ion-label position="inline">{{ reto.dateStart.toDate() | date:'mediumDate' }}</ion-label>
                       <ion-label float-right>
                           <ion-badge *ngIf="reto.activo" color="success">Activo</ion-badge>
                           <ion-badge *ngIf="!reto.activo" color="danger">Desactivo</ion-badge>
@@ -39,12 +39,7 @@
             <ion-card-content>
               
               <p>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.</p>
-              <!-- <ion-item>
-                  <ion-label>Activo</ion-label>
-                  <ion-toggle color="success" name="activo" [(ngModel)]="reto.activo"></ion-toggle>
-              </ion-item> -->
-              
-              <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+            
             </ion-card-content>
           </ion-card>
 </ion-content>

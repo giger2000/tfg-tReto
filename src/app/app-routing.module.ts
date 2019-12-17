@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'retos-firebase',
     loadChildren: () => import('./pages/retos-firebase/retos-firebase.module').then( m => m.RetosFirebasePageModule)
+  },
+  {
+    path: 'normas',
+    loadChildren: () => import('./pages/normas/normas.module').then( m => m.NormasPageModule)
   }
 ];
 

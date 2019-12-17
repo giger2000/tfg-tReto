@@ -18,16 +18,16 @@ export class RetosFirebasePage implements OnInit {
 $retos: Observable<Reto[]>; // porque el array varía en tiempo real
 retosCollection: AngularFirestoreCollection<Reto>;
 
-  constructor( 
+  constructor(
     private db: AngularFirestore,
     private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
     // Trabajamos con Observable porque trabajamos en tiempo real
-    
     this.retosCollection = this.db.collection<Reto>('retos');
     this.$retos = this.retosCollection.valueChanges();
+
 
   }
 
@@ -65,8 +65,7 @@ retosCollection: AngularFirestoreCollection<Reto>;
   }
 
   private addReto(name: string, dateStart: string, dateEnd: string) {
-    // let myDateTemp = new Date(dateStart);
-    // dateStart = this.$retos.dateStart.toDate();
+ 
     const newReto: Reto = {
       name,
       dateStart: '',

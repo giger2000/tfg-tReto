@@ -24,13 +24,13 @@ export class AppComponent {
       url: '/activities',
       icon: 'bicycle'
     },
-    // {
-    //   title: 'Retos',
-    //   url: '/retos',
-    //   icon: 'cycle'
-    // },
     {
-      title: 'Retos Fire',
+      title: 'Normas',
+      url: '/normas',
+      icon: 'book'
+    },
+    {
+      title: 'Retos',
       url: '/retos-firebase',
       icon: 'trophy'
     }
