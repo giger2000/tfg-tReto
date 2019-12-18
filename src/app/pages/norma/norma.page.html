@@ -1,9 +1,104 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>norma</ion-title>
+    <ion-title>Norma</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ 
 
+
+<ion-row class="animated fadeIn faster">
+    <ion-col>
+ 
+
+            <form (ngSubmit)="guardar(formNorma)"
+                      #formNorma="ngForm">
+            <!-- <ion-item>
+              <ion-label position="stacked">Firebase ID</ion-label>
+              <ion-input  type="text" 
+                          disabled
+                          placeholder="Firebase ID"
+                          [(ngModel)]="norma.id"
+                          
+                          name="id">
+              </ion-input>
+           
+            </ion-item> -->
+            <ion-item>
+                <ion-label position="stacked">Nombre de la norma</ion-label>
+                <ion-input  type="text" 
+                            required
+                            placeholder="Nombre de la norma"
+                            [(ngModel)]="norma.nombre"
+                            name="nombre">
+                </ion-input>
+              
+            </ion-item>
+            <ion-item>
+                  <ion-label position="stacked">Deporte</ion-label>
+                  <ion-input  type="text" 
+                              required
+                              placeholder="Deporte"
+                              [(ngModel)]="norma.deporte"
+                              name="deporte">
+                  </ion-input>
+          
+                
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Criterio</ion-label>
+                <ion-input  type="text" 
+                            required
+                            placeholder="Criterio"
+                            [(ngModel)]="norma.criterio"
+                            name="criterio">
+                </ion-input>
+            
+              
+            </ion-item>
+
+            <!-- MinValor -->
+            
+            <ion-item>
+              <ion-label position="stacked">Valor Mínimo</ion-label>
+              <ion-input  type="number" 
+                          required
+                          placeholder="Indicar valor mínimo exigido"
+                          [(ngModel)]="norma.minValor"
+                          name="minValor">
+              </ion-input>
+            </ion-item>
+            
+            <!-- coeficiente -->
+
+            <ion-item>
+              <ion-label position="stacked">Coeficiente</ion-label>
+              <ion-input  type="number" 
+                          required
+                          placeholder="Indicar el coeficiente"
+                          [(ngModel)]="norma.coeficiente"
+                          name="coeficiente">
+              </ion-input>
+            </ion-item>
+            
+
+            <!-- guardar  -->
+            <ion-row>
+                <ion-col class="ion-text-left">
+                    <ion-button type="submit">
+                        <ion-icon slot="start" name="archive"></ion-icon>
+                        Guardar
+                      </ion-button>
+                </ion-col>
+                <ion-col class="ion-text-right">
+                    <ion-button routerLink="/normas" color="light">
+                        <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+                        Volver
+                      </ion-button>
+                </ion-col>
+              </ion-row>
+        </form>
+    </ion-col>
+  </ion-row>
 </ion-content>

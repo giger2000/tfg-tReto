@@ -1,5 +1,5 @@
 export interface NormaModel {
-    id: string;
+    id?: string;
     nombre: string;
     deporte: string;
     minValor: number;

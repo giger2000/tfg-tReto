@@ -30,10 +30,10 @@ retosCollection: AngularFirestoreCollection<Reto>;
     this.$retos = this.retosCollection.valueChanges();
     
     // Muesta la info de la consulta
-    const info = this.retosCollection.valueChanges()
-                .subscribe( resp => {
-                  console.log(resp[0].dateStart);
-                });
+    // const info = this.retosCollection.valueChanges()
+    //             .subscribe( resp => {
+    //               console.log(resp[0].dateStart);
+    //             });
 
   }
 

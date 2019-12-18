@@ -6,6 +6,9 @@ import { NormaModel } from './../../interface/norma.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
+//Ionic loading
+import { LoadingController } from '@ionic/angular';
+
 @Component({
   selector: 'app-normas',
   templateUrl: './normas.page.html',
@@ -18,7 +21,8 @@ export class NormasPage implements OnInit {
   normasCollection: AngularFirestoreCollection<NormaModel>;
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    public loadingController: LoadingController
   ) { }
 
   ngOnInit() {
@@ -28,6 +32,21 @@ export class NormasPage implements OnInit {
 
     console.log(this.$normas);
   }
+
+  // LOADER
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando',
+      duration: 2000
+    });
+    await loading.present();
+    // ).then(loading => loading.present());
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+  }
+
 
 
 }

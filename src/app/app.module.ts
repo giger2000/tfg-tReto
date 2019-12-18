@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
+// Formularios
+import { FormsModule} from '@angular/forms';
 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -33,6 +35,7 @@ registerLocaleData(localeEs, 'es');
   entryComponents: [],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,

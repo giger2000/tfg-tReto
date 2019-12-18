@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <!-- <i class="fa fa-spinner fa-spin fa-5x"></i> -->
   <ion-card *ngFor="let norma of $normas | async">
   
     <ion-card-header>
@@ -46,4 +47,18 @@
      
     </ion-card-content>
   </ion-card>
+  <!-- MEnsajes alerta -->
+
+  <div>
+    <ion-text color="secondary">
+      <h1>No hay registros</h1>
+    </ion-text>
+
+  </div>
+
+  <ion-button expand="block" (click)="presentLoading()">Show Loading</ion-button>
+
+  <!-- crear norma -->
+  <ion-button expand="block" routerLink="/norma/nueva">Nueva norma</ion-button>
 </ion-content>
+

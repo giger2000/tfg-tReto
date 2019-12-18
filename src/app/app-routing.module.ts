@@ -39,7 +39,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/normas/normas.module').then( m => m.NormasPageModule)
   },
   {
-    path: 'norma',
+    path: 'norma/:id',
     loadChildren: () => import('./pages/norma/norma.module').then( m => m.NormaPageModule)
   }
 ];
