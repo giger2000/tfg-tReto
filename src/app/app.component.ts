@@ -36,7 +36,7 @@ export class AppComponent {
       icon: 'trophy'
     }
   ];
-  
+
 
   constructor(
     private platform: Platform,

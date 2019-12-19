@@ -3,9 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 // Formularios
-import { FormsModule } from '@angular/forms';
-// por data
-import { ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -33,10 +32,14 @@ import { LOCALE_ID } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 
+//Componentes
+import {NormaComponent } from './components/norma/norma.component'
+
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+                  NormaComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ registerLocaleData(localeEs, 'es');
   ],
   providers: [
     StatusBar,
-    {provide: LOCALE_ID, useValue:'es'},
+    {provide: LOCALE_ID, useValue: 'es'},
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

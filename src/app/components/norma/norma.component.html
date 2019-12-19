@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>norma</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <ion-col>
+ 
+
+            <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+        
+            <ion-item>
+                <ion-label position="stacked">Nombre de la norma</ion-label>
+                <ion-input  type="text" 
+                            placeholder="Nombre de la norma"
+                            formControlName="nombre">
+                </ion-input>
+              
+            </ion-item>
+            <!-- select -->
+            <ion-item>
+              <ion-label>Deporte</ion-label>
+              <ion-select interface="popover" 
+                          formControlName="deporte" 
+                          placeholder="Selecciona deporte">
+
+                <ion-select-option *ngFor="let item of deporte" [value]= "item.deporte">{{item.deporte}}</ion-select-option> 
+        
+              </ion-select>
+            </ion-item>
+
+              <!-- select CRITERIO-->
+              <ion-item>
+                <ion-label>Criterio</ion-label>
+                <ion-select interface="popover" 
+                            formControlName="criterio" 
+                            placeholder="Selecciona criterio">
+  
+                  <ion-select-option *ngFor="let item of criterio" [value]= "item.criterio">{{item.criterio}}</ion-select-option> 
+          
+                </ion-select>
+              </ion-item>
+        
+
+            <!-- MinValor -->
+            
+            <ion-item>
+              <ion-label position="stacked">Valor Mínimo</ion-label>
+              <ion-input  type="number" 
+                          placeholder="Indicar valor mínimo exigido"
+                          
+                          formControlName="minValor">
+              </ion-input>
+            </ion-item>
+          
+          
+           
+    
+            <ion-item>
+              <ion-label position="stacked">Coeficiente</ion-label>
+              <ion-input  type="number" 
+                          placeholder="0.0"
+                          formControlName="coeficiente">
+              </ion-input>
+            </ion-item>
+            
+
+            <!-- guardar  -->
+            <ion-row>
+                <ion-col class="ion-text-left">
+                    <ion-button type="submit" *ngIf="forma.valid">
+                        <ion-icon slot="start" name="archive"></ion-icon>
+                        Guardar
+                      </ion-button>
+                      <ion-button disabled *ngIf="!forma.valid">
+                        <ion-icon slot="start" name="archive"></ion-icon>
+                        Guardar
+                      </ion-button>
+                </ion-col>
+                <ion-col class="ion-text-right">
+                    <ion-button routerLink="/normas" color="light">
+                        <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+                        Volver
+                      </ion-button>
+                </ion-col>
+              </ion-row>
+        </form>
+    </ion-col>
+  </ion-row>
+  <!-- {{forma.valid}} -->
+</ion-content>

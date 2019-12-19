@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { NormaPage } from './norma.page';
+import { NormaComponent } from './norma.component';
 
-describe('NormaPage', () => {
-  let component: NormaPage;
-  let fixture: ComponentFixture<NormaPage>;
+describe('NormaComponent', () => {
+  let component: NormaComponent;
+  let fixture: ComponentFixture<NormaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NormaPage ],
+      declarations: [ NormaComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NormaPage);
+    fixture = TestBed.createComponent(NormaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
