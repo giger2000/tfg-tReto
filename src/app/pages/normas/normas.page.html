@@ -7,7 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="animated fadeIn faste" >
+
+
+  <div *ngIf="!cargando && tempNormas.length > 0">
   <!-- <i class="fa fa-spinner fa-spin fa-5x"></i> -->
   <ion-card *ngFor="let norma of $normas | async">
   
@@ -30,33 +33,43 @@
      <ion-item>
       <ion-label>Criterio: {{norma.criterio}} </ion-label>
     </ion-item>
-          <!-- <ion-select value={{norma.criterio}} interface="popover">
-            <ion-select-option value="desnivel">Desnivel</ion-select-option>
-            <ion-select-option value="distancio">Distancia</ion-select-option>
-            <ion-select-option value="tiempo">Tiempo</ion-select-option>
-            
-          </ion-select> -->
+  
       <ion-item>
         <ion-label>Coeficiente: {{norma.coeficiente }}</ion-label>
       </ion-item>
-        
-        <!-- <ion-range min="0.0" max="3.0" pin step="0.1" value="1.0" snaps color="light">
-          <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon>
-          <ion-icon slot="end" color="success" name="thermometer"></ion-icon>
-        </ion-range> -->
+ 
      
     </ion-card-content>
   </ion-card>
-  <!-- MEnsajes alerta -->
-
-  <div>
-    <ion-text color="secondary">
-      <h1>No hay registros</h1>
-    </ion-text>
-
   </div>
 
+   <!-- alertas -->
+<div *ngIf="!cargando && tempNormas.length === 0"
+class="alert alert-warning text-center mt-3 animated fadeIn faste">
+<h4>No hay registros</h4>
+<p>
+<ion-icon name="warning"></ion-icon>
+</p>
+<p class="mb-0">
+Espere por favor
+</p>
+</div>
+
+<!-- loader sencillo -->
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+  <h4>Cargando...</h4>
+  <p>
+      <ion-spinner name="crescent"></ion-spinner>
+  </p>
+  <p class="mb-0">
+    Espere por favor
+  </p>
+</div>
+<!-- *ngIf="cargando" -->
+<!-- <div >
   <ion-button expand="block" (click)="presentLoading()">Show Loading</ion-button>
+</div> -->
+
 
   <!-- crear norma -->
   <ion-button expand="block" routerLink="/norma/nueva">Nueva norma</ion-button>
