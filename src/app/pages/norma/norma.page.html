@@ -38,39 +38,30 @@
               
             </ion-item>
             <!-- select -->
-            <!-- <ion-item>
+            <ion-item>
               <ion-label>Deporte</ion-label>
-              <ion-select interface="popover" placeholder="Selecciona deporte" name="deporte">
-                <ion-select-option value="btt">BTT</ion-select-option>
-                <ion-select-option value="road">Road</ion-select-option>
-                <ion-select-option value="running">Running</ion-select-option>
-                <ion-select-option value="cinta">Cinta</ion-select-option>
-                <ion-select-option value="spinning">Spininng</ion-select-option>
+              <ion-select interface="popover" 
+                          [(ngModel)]="selectedDeporte"
+                          name="deporte" 
+                          placeholder="Selecciona deporte">
+
+                <ion-select-option *ngFor="let item of deporte" [value]= "item.deporte">{{item.deporte}}</ion-select-option>
         
               </ion-select>
-            </ion-item> -->
-            <ion-item>
-                  <ion-label position="stacked">Deporte</ion-label>
-                  <ion-input  type="text" 
-                              required
-                              placeholder="Selecciona deporte"
-                              [(ngModel)]="norma.deporte"
-                              name="deporte">
-                  </ion-input>
+            </ion-item>
+              <!-- select CRITERIO-->
+              <ion-item>
+                <ion-label>Criterio</ion-label>
+                <ion-select interface="popover" 
+                            [(ngModel)]="selectedCriterio"
+                            name="criterio" 
+                            placeholder="Selecciona criterio">
+  
+                  <ion-select-option *ngFor="let item of criterio" [value]= "item.criterio">{{item.criterio}}</ion-select-option>
           
-                
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked">Criterio</ion-label>
-                <ion-input  type="text" 
-                            required
-                            placeholder="Criterio"
-                            [(ngModel)]="norma.criterio"
-                            name="criterio">
-                </ion-input>
-            
-              
-            </ion-item>
+                </ion-select>
+              </ion-item>
+        
 
             <!-- MinValor -->
             
@@ -78,6 +69,7 @@
               <ion-label position="stacked">Valor Mínimo</ion-label>
               <ion-input  type="number" 
                           required
+                          maxlength="4"
                           placeholder="Indicar valor mínimo exigido"
                           [(ngModel)]="norma.minValor"
                           name="minValor">
@@ -86,11 +78,28 @@
             
             <!-- coeficiente -->
 
-            <ion-item>
+            <!-- <ion-item>
               <ion-label position="stacked">Coeficiente</ion-label>
               <ion-input  type="number" 
                           required
                           placeholder="Indicar el coeficiente"
+                          [(ngModel)]="norma.coeficiente"
+                          name="coeficiente">
+                          <ion-range id="dual-range" dual-knobs pin color="dark" min="0" max="3">
+                            <ion-icon slot="start" size="small" name="brush"></ion-icon>
+                            <ion-icon slot="end" name="brush"></ion-icon>
+                          </ion-range>
+              </ion-input>
+            </ion-item> -->
+          
+           
+    
+            <ion-item>
+              <ion-label position="stacked">Coeficiente</ion-label>
+              <ion-input  type="number" 
+                          required
+                          maxlength="3"
+                          placeholder="0.0"
                           [(ngModel)]="norma.coeficiente"
                           name="coeficiente">
               </ion-input>

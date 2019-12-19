@@ -6,6 +6,9 @@ import { NormaModel } from './../../interface/norma.model';
 // Formulario
 import { NgForm } from '@angular/forms';
 
+// ionic select
+import { Platform } from '@ionic/angular'
+
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -31,14 +34,35 @@ export class NormaPage implements OnInit {
 
     normasCollection: AngularFirestoreCollection<NormaModel>;
     $normas: Observable<NormaModel[]>; // porque el array varía en tiempo real
+        //Para select
+        selectedDeporte: string = "BTT";
+        selectedCriterio: string = "Desnivel";
+        deporte: any[] = [];
+        criterio: any[] = [];
 
 // private normaService: NormasService,
-  constructor( 
-              private db: AngularFirestore) { 
+  constructor(
+              private db: AngularFirestore,
+              private platform: Platform) {
 
                 this.normasCollection = this.db.collection<NormaModel>('norma');
                 this.$normas = this.normasCollection.valueChanges();
 
+            // Select DEPORTE
+                this.platform.ready().then(() => {
+                this.deporte = [{ deporte: 'BTT'}, { deporte: 'Road'}, { deporte: 'Running'}, { deporte: 'Cinta'}, { deporte: 'Spinning'} ];
+                });
+
+            // Select CRITERIO
+              this.platform.ready().then(() => {
+                this.criterio = [{ criterio: 'Desnivel'}, { criterio: 'Distancia'}, { criterio: 'Tiempo'}];
+              });
+
+
+              }
+
+              onChange(event) {
+                // alert("has seleccionado = " + event.target.value);
               }
 
   ngOnInit() {
@@ -47,7 +71,7 @@ export class NormaPage implements OnInit {
 
    guardar( formNorma: NgForm)  {
 
-    // console.log('Datos formulario', formNorma.value);
+     console.log('Datos formulario', formNorma.value);
 
     if ( formNorma.invalid) {
       console.log('Formulario no es válido');
