@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Norma</ion-title>
+    <ion-title>Norma x Data</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,12 +8,11 @@
  
 
 
-<ion-row class="animated fadeIn faster">
+<ion-row >
     <ion-col>
  
 
-            <form (ngSubmit)="guardar(formNorma)"
-                      #formNorma="ngForm">
+            <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
             <!-- <ion-item>
               <ion-label position="stacked">Firebase ID</ion-label>
               <ion-input  type="text" 
@@ -30,10 +29,8 @@
                   <!-- <fa-icon [icon]="faCoffee"></fa-icon>  -->
                   Nombre de la norma</ion-label>
                 <ion-input  type="text" 
-                            required
                             placeholder="Nombre de la norma"
-                            [(ngModel)]="norma.nombre"
-                            name="nombre">
+                            formControlName="nombre">
                 </ion-input>
               
             </ion-item>
@@ -54,8 +51,7 @@
                   <ion-input  type="text" 
                               required
                               placeholder="Selecciona deporte"
-                              [(ngModel)]="norma.deporte"
-                              name="deporte">
+                              formControlName="deporte">
                   </ion-input>
           
                 
@@ -65,8 +61,7 @@
                 <ion-input  type="text" 
                             required
                             placeholder="Criterio"
-                            [(ngModel)]="norma.criterio"
-                            name="criterio">
+                            formControlName="criterio">
                 </ion-input>
             
               
@@ -79,8 +74,7 @@
               <ion-input  type="number" 
                           required
                           placeholder="Indicar valor mínimo exigido"
-                          [(ngModel)]="norma.minValor"
-                          name="minValor">
+                          formControlName="minValor">
               </ion-input>
             </ion-item>
             
@@ -91,8 +85,7 @@
               <ion-input  type="number" 
                           required
                           placeholder="Indicar el coeficiente"
-                          [(ngModel)]="norma.coeficiente"
-                          name="coeficiente">
+                          formControlName="coeficiente">
               </ion-input>
             </ion-item>
             

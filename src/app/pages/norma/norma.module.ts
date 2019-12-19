@@ -8,11 +8,15 @@ import { NormaPageRoutingModule } from './norma-routing.module';
 
 import { NormaPage } from './norma.page';
 
+// FontAwesome
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    // FontAwesomeModule,
     NormaPageRoutingModule
   ],
   declarations: [NormaPage]

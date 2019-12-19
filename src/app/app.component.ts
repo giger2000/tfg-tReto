@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
   public appPages = [
     {
       title: 'Home',
@@ -35,6 +36,7 @@ export class AppComponent {
       icon: 'trophy'
     }
   ];
+  
 
   constructor(
     private platform: Platform,

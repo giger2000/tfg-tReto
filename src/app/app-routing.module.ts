@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'norma/:id',
     loadChildren: () => import('./pages/norma/norma.module').then( m => m.NormaPageModule)
   }
+  // {
+  //   path: 'norma-data/:id',
+  //   loadChildren: () => import('./pages/norma-data/norma-data.module').then( m => m.NormaDataPageModule)
+  // }
 ];
 
 @NgModule({

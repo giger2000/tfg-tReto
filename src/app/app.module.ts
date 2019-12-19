@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 // Formularios
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+// por data
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -12,6 +14,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+// Icons
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // firebase
 import { AngularFireModule } from '@angular/fire';
@@ -35,7 +40,9 @@ registerLocaleData(localeEs, 'es');
   entryComponents: [],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
