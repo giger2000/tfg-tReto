@@ -3,8 +3,14 @@ import { Injectable } from '@angular/core';
 // Firebase
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 // import { map } from 'rxjs/operators';
 import { NormaModel } from '../interface/norma.model';
+
+
+
+import { HttpClient} from '@angular/common/http';
+
 
 
 
@@ -13,47 +19,90 @@ import { NormaModel } from '../interface/norma.model';
 })
 export class NormasService {
 
+  // Formulario
+  // forma: FormGroup;
+
   normas: Observable<NormaModel[]>;
   normasCollection: AngularFirestoreCollection<NormaModel>;
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private http: HttpClient
     ) {
-      // this.normasCollection = this.db.collection<NormaModel>('norma');
-      // this.normas = this.normasCollection.valueChanges();
-    }
+ 
+     }
 
-  //   private addNorma(nombre: string, deporte: string, criterio: string, minValor: number, coeficiente: number) { 
-  //     const id = this.db.createId();
-  //     const newNorma: NormaModel = {
-  //       nombre,
-  //       deporte,
-  //       criterio,
-  //       minValor,
-  //       coeficiente
-  //  };
-  //   this.normasCollection.doc(id).set(newNorma);
+  getNormas() {
+    console.log('entramos en getnormas service');
+
+    this.normasCollection = this.db.collection<NormaModel>('norma');
+    // this.normas = this.normasCollection.valueChanges();
+    // return this.normas;
+    return this.normasCollection.snapshotChanges();
+
+  }
+
+
+  // updateNorma(data) {
+  //   return this.db
+  //     .collection("norma")
+  //     .doc(data.payload.doc.id)
+  //     .set({ completed: true }, { merge: true });
+  // }
+
+  // deleteCoffeeOrder(data) {
+  //   return this.firestore
+  //     .collection("coffeeOrders")
+  //     .doc(data.payload.doc.id)
+  //     .delete();
+  // }
+
+  crearNorma(norma: NormaModel) {
+    return new Promise<any>((resolve, reject) => {
+      this.db
+        .collection('norma')
+        .add(norma)
+        .then(res => {
+          console.log('Norma almacenada', res);
+          return;
+          // console.log('Formulario', this.forma);
+          // this.normas.toPromiseresetForm();
+        }, err => reject(err));
+    });
+  }
+
+  
+
+
+
+  // getNorma(): Observable<any> {
+  //   return new Observable((observer) => {
+  //     this.ref.onSnapshot((querySnapshot) => {
+  //       let normas = [];
+  //       querySnapshot.forEach((doc) => {
+  //         let data = doc.data();
+  //         boards.push({
+  //           key: doc.id,
+  //           title: data.title,
+  //           description: data.description,
+  //           author: data.author
+  //         });
+  //       });
+  //       observer.next(boards);
+  //     });
+  //   });
+
 
   // }
 
-  getNormas() {
 
-    // var docRef = this.db.collection<NormaModel>('norma').doc('nr1');
+//   createCoffeeOrder(data) {
+//     return new Promise<any>((resolve, reject) => {
+//         this.db
+//             .collection("norma")
+//             .add(data)
+//             .then(res => {}, err => reject(err));
+//     });
+// }
 
-    // docRef.get().then(function(doc) {
-    //     if (doc.exists) {
-    //         console.log("Document data:", doc.data());
-    //         return doc;
-    //     } else {
-    //         // doc.data() will be undefined in this case
-    //         console.log("No such document!");
-    //     }
-    // }).catch(function(error) {
-    //     console.log("Error getting document:", error);
-    // });
-
-    this.normasCollection = this.db.collection<NormaModel>('norma');
-    this.normas = this.normasCollection.valueChanges();
-    return this.normas;
-  }
 }

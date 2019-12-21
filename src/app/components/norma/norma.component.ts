@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+// import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 // ionic select
 import { Platform } from '@ionic/angular';
@@ -9,6 +9,12 @@ import { NormaModel } from './../../interface/norma.model';
 // Firebase
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
+// Servicio
+import {NormasService } from './../../services/normas.service';
+
+// Formularios
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-norma',
@@ -24,37 +30,23 @@ export class NormaComponent {
   //para insertar tarea necesitamos instancia
   normasCollection: AngularFirestoreCollection<NormaModel>;
   $normas: Observable<NormaModel[]>; // porque el array varía en tiempo real
-   
 
   // Para select
-  // selectedDeporte: string = "BTT";
-  // selectedCriterio: string = "Desnivel";
+
   deporte: any[] = [];
   criterio: any[] = [];
 
   constructor(  private db: AngularFirestore,
-                private platform: Platform) {
+                private platform: Platform,
+                private normasService: NormasService,
+                private fb: FormBuilder) {
 
   // Definimos datos collección del Firebase
   this.normasCollection = this.db.collection<NormaModel>('norma');
   this.$normas = this.normasCollection.valueChanges();
 
-  this.forma = new FormGroup({
-    'nombre': new FormControl('', [
-                                    Validators.required,
-                                    Validators.minLength(3)
-                                  ]), // Valor, regla validación, validación asíncrona
-    'deporte': new FormControl('BTT', Validators.required),
-    'criterio': new FormControl('Desnivel', Validators.required),
-    'minValor': new FormControl('', [
-                                      Validators.required,
-                                      Validators.pattern("^[0-9]{1,4}$")
-                                    ]),
-    'coeficiente': new FormControl('', [
-                                        Validators.required,
-                                        Validators.pattern("^[0-9]+([.][0-9]+)?$")
-                                      ])
-  });
+  this.buildForm();
+
 
    // Select DEPORTE
   this.platform.ready().then(() => {
@@ -66,28 +58,34 @@ export class NormaComponent {
     this.criterio = [{ criterio: 'Desnivel'}, { criterio: 'Distancia'}, { criterio: 'Tiempo'}];
   });
 
-    // Recuperar datos de formulario
-    // this.forma.setValue(this.norma);
   }
+
+  // Constructor de formulario
+  private buildForm(){
+
+    this.forma = this.fb.group({
+      nombre: ['', [
+                    Validators.required,
+                    Validators.minLength(3)]
+                    ], // Valor, regla validación, validación asíncrona
+      deporte: ['BTT', Validators.required],
+      criterio: ['Desnivel', Validators.required],
+      minValor: ['', [
+                      Validators.required,
+                      Validators.pattern('^[0-9]{1,4}$')]
+                    ],
+      coeficiente: ['', [
+                          Validators.required,
+                          Validators.pattern('^[0-9]+([.][0-9]+)?$')]
+                      ]
+    });
+
+  }
+
 
   guardarCambios(forma) {
 
-   // console.log(this.forma.value);
-
-    // Guardar datos en Firebase
-    const objForm = this.forma.value; // objeto con todo el formulario
-
-    // console.log('Datos del objForm del formulario ', objForm);
-
-    const id = this.db.createId();
-
-    this.normasCollection.doc(id).set(objForm);
-    this.resetForm();
-  }
-
-  // Función para borrar el formulario tras envío
-  resetForm() {
-    // Reset del formulario al enviar los datos
+    this.normasService.crearNorma(this.forma.value);
     this.forma.reset({
       nombre: '',
       deporte: 'BTT',
@@ -95,8 +93,16 @@ export class NormaComponent {
       minValor: '',
       coeficiente: '0.0'
     });
+
+
   }
 
+ 
+// campos personalizados para validación
+
+get nombreField() {
+  return this.forma.get('nombre');
+}
 
 
 }

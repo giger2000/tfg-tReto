@@ -18,8 +18,14 @@
                             placeholder="Nombre de la norma"
                             formControlName="nombre">
                 </ion-input>
-              
             </ion-item>
+       
+              <ion-text *ngIf="nombreField.errors && nombreField.dirty" color="danger">
+             
+                <small *ngIf="nombreField.hasError('required')">Indica un nombre</small>
+            </ion-text>
+     
+           
             <!-- select -->
             <ion-item>
               <ion-label>Deporte</ion-label>
@@ -48,7 +54,11 @@
             <!-- MinValor -->
             
             <ion-item>
-              <ion-label position="stacked">Valor Mínimo</ion-label>
+              <ion-label position="stacked" >Valor Mínimo 
+                                                                                      <!-- <span *ngIf='criterio==="Desnivel"'>.m </span>
+                                                                                      <span *ngIf='item.criterio==="Distancia"'>.m </span>
+                                                                                      <span *ngIf='item.criterio==="Tiempo"'>.seg </span> -->
+                                                                                                   </ion-label>
               <ion-input  type="number" 
                           placeholder="Indicar valor mínimo exigido"
                           
@@ -71,14 +81,12 @@
             <!-- guardar  -->
             <ion-row>
                 <ion-col class="ion-text-left">
-                    <ion-button type="submit" *ngIf="forma.valid">
+                  <!-- *ngIf="forma.valid" -->
+                    <ion-button type="submit" [disabled]="forma.invalid">
                         <ion-icon slot="start" name="archive"></ion-icon>
                         Guardar
                       </ion-button>
-                      <ion-button disabled *ngIf="!forma.valid">
-                        <ion-icon slot="start" name="archive"></ion-icon>
-                        Guardar
-                      </ion-button>
+ 
                 </ion-col>
                 <ion-col class="ion-text-right">
                     <ion-button routerLink="/normas" color="light">

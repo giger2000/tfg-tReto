@@ -5,13 +5,20 @@
   <ion-toolbar>
     <ion-title>NORMAS</ion-title>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content class="animated fadeIn faste" >
+<!-- // Botón más -->
+  <ion-fab horizontal="center" vertical="bottom" slot="fixed">
+    <ion-fab-button color="danger" routerLink="/norma/nueva">
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 
   <div *ngIf="!cargando && tempNormas.length > 0">
-  <!-- <i class="fa fa-spinner fa-spin fa-5x"></i> -->
+
   <ion-card *ngFor="let norma of $normas | async">
   
     <ion-card-header>
@@ -21,7 +28,6 @@
     </ion-card-subtitle>  
 
       <ion-card-title>{{ norma.nombre}}</ion-card-title>
-      <!-- <ion-card-title>{{ reto.id }}</ion-card-title> -->
       
     </ion-card-header>
     <ion-card-content>
@@ -65,13 +71,6 @@ Espere por favor
     Espere por favor
   </p>
 </div>
-<!-- *ngIf="cargando" -->
-<!-- <div >
-  <ion-button expand="block" (click)="presentLoading()">Show Loading</ion-button>
-</div> -->
 
 
-  <!-- crear norma -->
-  <ion-button expand="block" routerLink="/norma/nueva">Nueva norma</ion-button>
 </ion-content>
-

@@ -32,14 +32,24 @@ import { LOCALE_ID } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 
-//Componentes
-import {NormaComponent } from './components/norma/norma.component'
+// Componentes
+import { NormasComponent } from './components/normas/normas.component';
+import { NormaComponent } from './components/norma/norma.component';
+
+
+
+
+
+// temporales
+import {NormasService } from './services/normas.service';
 
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [AppComponent,
-                  NormaComponent],
+                  NormaComponent,
+                  NormasComponent
+                  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -56,6 +66,7 @@ registerLocaleData(localeEs, 'es');
   ],
   providers: [
     StatusBar,
+    NormasService,
     {provide: LOCALE_ID, useValue: 'es'},
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

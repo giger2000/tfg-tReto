@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { NormaComponent } from './components/norma/norma.component';
+import { NormasComponent } from './components/normas/normas.component';
 
 
 
@@ -36,19 +37,17 @@ const routes: Routes = [
     path: 'retos-firebase',
     loadChildren: () => import('./pages/retos-firebase/retos-firebase.module').then( m => m.RetosFirebasePageModule)
   },
-  {
-    path: 'normas',
-    loadChildren: () => import('./pages/normas/normas.module').then( m => m.NormasPageModule)
-  },
+  // {
+  //   path: 'normas',
+  //   loadChildren: () => import('./pages/normas/normas.module').then( m => m.NormasPageModule)
+  // },
   // {
   //   path: 'norma/:id',
   //   loadChildren: () => import('./components/norma/norma.component').then( m => m.NormaPageModule)
   // },
-  { path : 'norma/:id', component: NormaComponent}
-  // {
-  //   path: 'norma',
-  //   loadChildren: () => import('./pages/norma/norma.module').then( m => m.NormaPageModule)
-  // }
+  { path : 'norma/:id', component: NormaComponent},
+  {path : 'normas', component: NormasComponent}
+
 
 ];
 
