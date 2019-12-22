@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { NormaComponent } from './components/norma/norma.component';
+// import { NormaComponent } from './components/norma/norma.component';
 import { NormasComponent } from './components/normas/normas.component';
 
 
@@ -45,7 +45,7 @@ const routes: Routes = [
   //   path: 'norma/:id',
   //   loadChildren: () => import('./components/norma/norma.component').then( m => m.NormaPageModule)
   // },
-  { path : 'norma/:id', component: NormaComponent},
+  // { path : 'norma/:id', component: NormaComponent},
   {path : 'normas', component: NormasComponent}
 
 

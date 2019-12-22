@@ -25,6 +25,8 @@ export class NormaComponent {
 
   norma: NormaModel[] = [];
 
+  // norma: any =
+
   forma: FormGroup;
 
   //para insertar tarea necesitamos instancia
@@ -61,7 +63,7 @@ export class NormaComponent {
   }
 
   // Constructor de formulario
-  private buildForm(){
+  private buildForm() {
 
     this.forma = this.fb.group({
       nombre: ['', [
@@ -85,7 +87,9 @@ export class NormaComponent {
 
   guardarCambios(forma) {
 
-    this.normasService.crearNorma(this.forma.value);
+    this.normasService.agregarNorma(this.forma.value);
+
+    // this.normasService.crearNorma(this.forma.value);
     this.forma.reset({
       nombre: '',
       deporte: 'BTT',
@@ -96,8 +100,6 @@ export class NormaComponent {
 
 
   }
-
- 
 // campos personalizados para validación
 
 get nombreField() {
