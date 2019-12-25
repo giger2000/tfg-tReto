@@ -10,7 +10,7 @@
     <ion-col>
  
 
-            <form [formGroup]="forma" (ngSubmit)="guardarCambios()" block>
+            <form [formGroup]="forma" (ngSubmit)="guardarCambios()" >
         
             <ion-item>
                 <ion-label position="stacked">Nombre de la norma</ion-label>
@@ -79,10 +79,9 @@
 
             <!-- guardar  -->
             <ion-row>
-                <ion-col class="ion-text-left">
-                  <!-- *ngIf="forma.valid" -->
+                <ion-col class="ion-text-left" block>
                     <ion-button type="submit" [disabled]="forma.invalid">
-                        <ion-icon slot="center" name="archive"></ion-icon>
+                        <ion-icon name="archive"></ion-icon>
                         Guardar
                       </ion-button>
  

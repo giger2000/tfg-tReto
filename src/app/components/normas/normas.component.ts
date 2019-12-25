@@ -35,11 +35,6 @@ export class NormasComponent implements OnInit {
   // Para los cargadores de alertas iniciales
   cargando = false;
 
-  // tempNormas: any[] ; // Para el loading
-
-
-  // $normas: Observable<NormaModel[]>; // porque el array varía en tiempo real
-  // normasCollection: AngularFirestoreCollection<NormaModel>;
 
   normas: Observable<NormaModel[]>;
 
@@ -61,9 +56,7 @@ export class NormasComponent implements OnInit {
     private platform: Platform,
     ) {
       this.buildForm();
-      // this.cargando = true;
-      // Llenamos normas con la lista de normas de la colección a la que nos suscribimos
-     
+       this.cargando = true;
 
          // Select DEPORTE
       this.platform.ready().then(() => {
@@ -104,21 +97,16 @@ export class NormasComponent implements OnInit {
   ngOnInit() {
  
     this.normas = this.normasService.listaNorma();
-    // .subscribe(norma => {
-    //   this.normas = norma;
-    //   // this.cargando = false;
-    //   console.log('Del init',this.normas);
-    // });
+    this.cargando = false;
 
     // this.normasCollection = this.db.collection<NormaModel>('norma');
     // this.$normas = this.normasCollection.valueChanges();
-    
     // Cargar pantalla de normas
     // this.normasService
-    // .getNormas()
+    // .listaNorma()
     // .subscribe ( resp => {
     //   // console.log ('esperando subscribe');
-    //       // this.tempNormas = resp;
+    //   this.normas = resp// this.tempNormas = resp;
     //       this.cargando = false;
     //       console.log('respuesta: ', resp);
     //     });

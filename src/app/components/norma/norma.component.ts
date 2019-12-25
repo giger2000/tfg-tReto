@@ -25,8 +25,6 @@ export class NormaComponent {
 
   norma: NormaModel[] = [];
 
-  // norma: any =
-
   forma: FormGroup;
 
   //para insertar tarea necesitamos instancia
