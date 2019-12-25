@@ -5,6 +5,8 @@ import { RouteReuseStrategy } from '@angular/router';
 // Formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Bootstrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -53,6 +55,7 @@ registerLocaleData(localeEs, 'es');
   entryComponents: [],
   imports: [
     BrowserModule,
+    NgbModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,

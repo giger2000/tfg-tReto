@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>norma</ion-title>
+    <ion-title>Editar Norma</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +10,7 @@
     <ion-col>
  
 
-            <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+            <form [formGroup]="forma" (ngSubmit)="guardarCambios()" >
         
             <ion-item>
                 <ion-label position="stacked">Nombre de la norma</ion-label>
@@ -21,7 +21,6 @@
             </ion-item>
        
               <ion-text *ngIf="nombreField.errors && nombreField.dirty" color="danger">
-             
                 <small *ngIf="nombreField.hasError('required')">Indica un nombre</small>
             </ion-text>
      
@@ -80,20 +79,19 @@
 
             <!-- guardar  -->
             <ion-row>
-                <ion-col class="ion-text-left">
-                  <!-- *ngIf="forma.valid" -->
+                <ion-col class="ion-text-left" block>
                     <ion-button type="submit" [disabled]="forma.invalid">
-                        <ion-icon slot="start" name="archive"></ion-icon>
+                        <ion-icon name="archive"></ion-icon>
                         Guardar
                       </ion-button>
  
                 </ion-col>
-                <ion-col class="ion-text-right">
+                <!-- <ion-col class="ion-text-right">
                     <ion-button routerLink="/normas" color="light">
                         <ion-icon slot="start" name="arrow-round-back"></ion-icon>
                         Volver
                       </ion-button>
-                </ion-col>
+                </ion-col> -->
               </ion-row>
         </form>
     </ion-col>
