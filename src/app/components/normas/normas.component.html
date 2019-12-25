@@ -11,21 +11,22 @@
 
 <ion-content>
 <!-- // Botón más -->
-  <ion-fab horizontal="center" vertical="bottom" slot="fixed">
+  <!-- <ion-fab horizontal="center" vertical="bottom" slot="fixed">
     <ion-fab-button color="danger">
       <ion-icon name="add" ></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 
-  <!-- {{normas.length}} -->
 
   {{cargando}}
+  <!-- {{normas.length}} -->
 
-  <!-- *ngIf="!cargando"  -->
-  <div>
+
+  <!--   -->
+  <div *ngIf="!cargando">
 
   <ion-list>
-    <ion-item-group *ngFor="let norma of normas">
+    <ion-item-group *ngFor="let norma of normas | async">
         <ion-item-divider sticky>
             <ion-avatar slot="start">
                
@@ -72,7 +73,7 @@
     </ion-item-group>
 </ion-list>
 
-<!-- final lilsta de normas  -->
+<!-- final lista de normas  -->
   </div>
 
 
@@ -172,10 +173,9 @@
   </div>
 </div>
 
+<!-- && normas.length === 0  -->
 
-   <!-- alertas -->
-<!-- <div *ngIf="!cargando && tempNormas.length === 0"
-class="alert alert-warning text-center mt-3 animated fadeIn faste">
+<div *ngIf="!cargando && (normas | async)?.length=== 0" class="alert alert-warning text-center mt-3 animated fadeIn faste">
 <h4>No hay registros</h4>
 <p>
 <ion-icon name="warning"></ion-icon>
@@ -185,7 +185,7 @@ Espere por favor
 </p>
 </div>
 
-loader sencillo
+<!-- loader sencillo -->
  <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
   <h4>Cargando...</h4>
   <p>
@@ -194,7 +194,7 @@ loader sencillo
   <p class="mb-0">
     Espere por favor
   </p>
-</div> --> 
+</div> 
 
 <app-norma></app-norma>
 </ion-content>

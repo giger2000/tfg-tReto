@@ -41,7 +41,7 @@ export class NormasComponent implements OnInit {
   // $normas: Observable<NormaModel[]>; // porque el array varía en tiempo real
   // normasCollection: AngularFirestoreCollection<NormaModel>;
 
-  normas: any;
+  normas: Observable<NormaModel[]>;
 
   editNorma: any = {
     nombre: ''
@@ -63,12 +63,7 @@ export class NormasComponent implements OnInit {
       this.buildForm();
       // this.cargando = true;
       // Llenamos normas con la lista de normas de la colección a la que nos suscribimos
-      this.normasService.listaNorma()
-        .subscribe(norma => {
-          this.normas = norma;
-          // this.cargando = false;
-          console.log(this.normas);
-        });
+     
 
          // Select DEPORTE
       this.platform.ready().then(() => {
@@ -108,6 +103,12 @@ export class NormasComponent implements OnInit {
 
   ngOnInit() {
  
+    this.normas = this.normasService.listaNorma();
+    // .subscribe(norma => {
+    //   this.normas = norma;
+    //   // this.cargando = false;
+    //   console.log('Del init',this.normas);
+    // });
 
     // this.normasCollection = this.db.collection<NormaModel>('norma');
     // this.$normas = this.normasCollection.valueChanges();
