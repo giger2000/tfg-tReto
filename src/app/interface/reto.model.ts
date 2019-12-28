@@ -1,6 +1,6 @@
 import { NormaModel } from './norma.model';
 
-export interface Reto {
+export interface RetoModel {
     id?: string;
     name: string;
     dateStart: string;

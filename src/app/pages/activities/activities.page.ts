@@ -27,7 +27,15 @@ export class ActivitiesPage implements OnInit {
     .subscribe( (data: any) => {
       const activities = data.actividades;
       this.activities = activities;
+      //  console.log("actividades ",this.activities);
     });
+
+    this.puntuar();
+  }
+
+  puntuar(){
+    this.activities.length;
+    console.log( this.activities.length);
   }
 
 }

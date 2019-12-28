@@ -40,10 +40,10 @@ export class NormasComponent implements OnInit {
 
   editNorma: any = {
     nombre: ''
-  }
+  };
   forma: FormGroup;
   // Para select
-  
+
   deporte: any[] = [];
   criterio: any[] = [];
 
@@ -56,13 +56,12 @@ export class NormasComponent implements OnInit {
     private platform: Platform,
     ) {
       this.buildForm();
-       this.cargando = true;
+      this.cargando = true;
 
          // Select DEPORTE
       this.platform.ready().then(() => {
           this.deporte = [{ deporte: 'BTT'}, { deporte: 'Road'}, { deporte: 'Running'}, { deporte: 'Cinta'}, { deporte: 'Spinning'} ];
         });
-        
         // Select CRITERIO
       this.platform.ready().then(() => {
           this.criterio = [{ criterio: 'Desnivel'}, { criterio: 'Distancia'}, { criterio: 'Tiempo'}];
@@ -99,17 +98,6 @@ export class NormasComponent implements OnInit {
     this.normas = this.normasService.listaNorma();
     this.cargando = false;
 
-    // this.normasCollection = this.db.collection<NormaModel>('norma');
-    // this.$normas = this.normasCollection.valueChanges();
-    // Cargar pantalla de normas
-    // this.normasService
-    // .listaNorma()
-    // .subscribe ( resp => {
-    //   // console.log ('esperando subscribe');
-    //   this.normas = resp// this.tempNormas = resp;
-    //       this.cargando = false;
-    //       console.log('respuesta: ', resp);
-    //     });
 
   }
 // Al pulsar el icono de papelera
@@ -122,7 +110,7 @@ export class NormasComponent implements OnInit {
     console.log('Estamos en edición', this.editNorma);
   }
 
-  agregarNormaEdita(){
+  agregarNormaEdita() {
     this.normasService.editarNorma(this.editNorma);
   }
 

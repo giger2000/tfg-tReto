@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
-import { Reto } from './../../interface/reto';
+import { RetoModel } from './../../interface/reto.model';
+import { NormaModel } from './../../interface/norma.model';
 
 // Firebase
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
+import {RetosService} from './../../services/retos.service';
+// import {NormasService } from './../../services/normas.service';
 
 
 
@@ -16,69 +20,28 @@ import { Observable } from 'rxjs';
 })
 export class RetosFirebasePage implements OnInit {
 
-$retos: Observable<Reto[]>; // porque el array varía en tiempo real
-retosCollection: AngularFirestoreCollection<Reto>;
+  retos: Observable<RetoModel[]>;
+  // normas: Observable<NormaModel[]>;
+
+  editReto: any = {
+    nombre: ''
+  }
+
+
 
   constructor(
     private db: AngularFirestore,
-    private alertCtrl: AlertController
+    private retosService: RetosService
+    // private normasService: NormasService
   ) { }
 
   ngOnInit() {
-    // Trabajamos con Observable porque trabajamos en tiempo real
-    this.retosCollection = this.db.collection<Reto>('retos');
-    this.$retos = this.retosCollection.valueChanges();
-    
-    // Muesta la info de la consulta
-    // const info = this.retosCollection.valueChanges()
-    //             .subscribe( resp => {
-    //               console.log(resp[0].dateStart);
-    //             });
 
-  }
+    this.retos = this.retosService.listaReto();
+    // this.normas = this.normasService.listaNormas();
+    // console.log(this.retos);
+    // this.cargando = false;
 
-  async openAlert() {
-    const alert = await this.alertCtrl.create({
-      header: 'Nuevo reto',
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'Nombre del reto'
-        },
-        {
-          name: 'dateStart',
-          placeholder: 'Fecha Inicial'
-        },
-        {
-          name: 'dateEnd',
-          placeholder: 'Fecha Final'
-        }
-      ],
-      buttons: [
-        {
-          text: 'cancelar',
-          role: 'cancel'
-        },
-        {
-          text: 'crear',
-          handler: (data) => {
-            this.addReto(data.name, data.dateStart, data.dateEnd);
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  private addReto(name: string, dateStart: string, dateEnd: string) {
-
-    const newReto: Reto = {
-      name,
-      dateStart: '',
-      dateEnd: '',
-      activo: false,
-    };
-    this.retosCollection.add(newReto);
   }
 
 }

@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 // import { NormaComponent } from './components/norma/norma.component';
 import { NormasComponent } from './components/normas/normas.component';
+import { RetoComponent } from './components/reto/reto.component';
 
 
 
@@ -26,10 +27,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'retos',
-    loadChildren: () => import('./pages/retos/retos.module').then( m => m.RetosPageModule)
-  },
-  {
     path: 'activities',
     loadChildren: () => import('./pages/activities/activities.module').then( m => m.ActivitiesPageModule)
   },
@@ -37,16 +34,24 @@ const routes: Routes = [
     path: 'retos-firebase',
     loadChildren: () => import('./pages/retos-firebase/retos-firebase.module').then( m => m.RetosFirebasePageModule)
   },
-  // {
-  //   path: 'normas',
-  //   loadChildren: () => import('./pages/normas/normas.module').then( m => m.NormasPageModule)
-  // },
-  // {
-  //   path: 'norma/:id',
-  //   loadChildren: () => import('./components/norma/norma.component').then( m => m.NormaPageModule)
-  // },
-  // { path : 'norma/:id', component: NormaComponent},
-  {path : 'normas', component: NormasComponent}
+  {
+    path : 'normas', component: NormasComponent
+  },
+  {
+    path : 'reto', component: RetoComponent
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'login-ionic',
+    loadChildren: () => import('./pages/login-ionic/login-ionic.module').then( m => m.LoginIonicPageModule)
+  },
+  {
+    path: 'registerionic',
+    loadChildren: () => import('./pages/registerionic/registerionic.module').then( m => m.RegisterionicPageModule)
+  }
 
 
 ];

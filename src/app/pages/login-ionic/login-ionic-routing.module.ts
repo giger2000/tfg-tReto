@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RetosPage } from './retos.page';
+import { LoginIonicPage } from './login-ionic.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RetosPage
+    component: LoginIonicPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class RetosPageRoutingModule {}
+export class LoginIonicPageRoutingModule {}

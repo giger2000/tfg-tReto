@@ -74,7 +74,7 @@ export class AppComponent {
       let enable = false;
       if (session !== null) {
         enable = true;
-        this.navCtrl.navigateRoot('normas');
+        this.navCtrl.navigateRoot('Retos');
       }
       this.menuCtrl.enable(enable);
     });

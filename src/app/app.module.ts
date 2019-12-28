@@ -37,7 +37,7 @@ import { registerLocaleData } from '@angular/common';
 // Componentes
 import { NormasComponent } from './components/normas/normas.component';
 import { NormaComponent } from './components/norma/norma.component';
-
+import { RetoComponent } from './components/reto/reto.component';
 
 
 
@@ -50,7 +50,8 @@ registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [AppComponent,
                   NormaComponent,
-                  NormasComponent
+                  NormasComponent,
+                  RetoComponent
                   ],
   entryComponents: [],
   imports: [

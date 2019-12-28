@@ -87,7 +87,7 @@ export class NormaComponent {
 
     this.normasService.agregarNorma(this.forma.value);
 
-    // this.normasService.crearNorma(this.forma.value);
+  
     this.forma.reset({
       nombre: '',
       deporte: 'BTT',

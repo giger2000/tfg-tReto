@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RetosPageRoutingModule } from './retos-routing.module';
+import { RegisterionicPageRoutingModule } from './registerionic-routing.module';
 
-import { RetosPage } from './retos.page';
+import { RegisterionicPage } from './registerionic.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RetosPageRoutingModule
+    RegisterionicPageRoutingModule
   ],
-  declarations: [RetosPage]
+  declarations: [RegisterionicPage]
 })
-export class RetosPageModule {}
+export class RegisterionicPageModule {}
