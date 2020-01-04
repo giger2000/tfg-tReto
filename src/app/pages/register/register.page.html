@@ -3,50 +3,58 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registro</ion-title>
+    <ion-title>Nueva Cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="form" (ngSubmit)="doRegister()">
+  <form [formGroup]="form" (ngSubmit)="register()">
     <ion-list>
-          <ion-item>
-            <ion-label position="stacked">
-              Nombre
-            </ion-label>
-            <ion-input formControlName="firstName"></ion-input>
-          </ion-item>
-   
-   
-            <ion-item>
-              <ion-label position="stacked">
-                Apellidos
-              </ion-label>
-              <ion-input formControlName="lastName"></ion-input>
-            </ion-item>
          
-   
-              <ion-item>
-                <ion-label position="stacked">
-                  Usuario Strava
-                </ion-label>
-                <ion-input formControlName="stravaUID"></ion-input>
-              </ion-item>
          
       
       <ion-item>
-        <ion-label position="stacked">
-          Correo
+        <ion-label position="floating">
+          Nombre de Usuario (email)
         </ion-label>
         <ion-input formControlName="email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="stacked">
-          Contraseña
+        <ion-label position="floating">
+          Contraseña (min. 6 caracteres)
         </ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label position="floating">
+          Confirmar contraseña
+        </ion-label>
+        <ion-input type="password" formControlName="cpassword"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">
+          Nombre
+        </ion-label>
+        <ion-input formControlName="firstName"></ion-input>
+      </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">
+            Apellidos
+          </ion-label>
+          <ion-input formControlName="lastName"></ion-input>
+        </ion-item>
+     
+
+          <ion-item>
+            <ion-label position="floating">
+              Usuario Strava
+            </ion-label>
+            <ion-input formControlName="stravaUID"></ion-input>
+          </ion-item>
     </ion-list>
-    <ion-button [disabled]="form.invalid" type="submit">Ingresar</ion-button>
+    <ion-button fill="solid" expand="block" color="primary" [disabled]="form.invalid" type="submit">Registrar</ion-button>
   </form>
 </ion-content>

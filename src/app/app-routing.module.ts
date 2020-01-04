@@ -39,19 +39,8 @@ const routes: Routes = [
   },
   {
     path : 'reto', component: RetoComponent
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  {
-    path: 'login-ionic',
-    loadChildren: () => import('./pages/login-ionic/login-ionic.module').then( m => m.LoginIonicPageModule)
-  },
-  {
-    path: 'registerionic',
-    loadChildren: () => import('./pages/registerionic/registerionic.module').then( m => m.RegisterionicPageModule)
   }
+  
 
 
 ];

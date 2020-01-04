@@ -35,6 +35,17 @@ export class AppComponent {
       url: '/retos-firebase',
       icon: 'trophy'
     }
+    // {
+    //   title: 'Login Ionic',
+    //   url: '/login-ionic',
+    //   icon: 'trophy'
+    // }
+    // {
+    //   title: 'Register Ionic',
+    //   url: '/registerionic',
+    //   icon: 'trophy'
+    // }
+
   ];
 
 
@@ -43,7 +54,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private auth: AuthService,
-    db: AngularFirestore,
+    private db: AngularFirestore,
     private menuCtrl: MenuController,
     private navCtrl: NavController
   ) {
@@ -54,7 +65,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.listenAuthState();
+      // this.listenAuthState();
     });
   }
 
@@ -67,16 +78,16 @@ export class AppComponent {
   // Observable para controlar si hace falta mostrar o no el menú
   // Lo centralizamos en esta función
 
-  listenAuthState() {
-    this.auth.getAuthState()
-    .subscribe(session => {
-      console.log(session);
-      let enable = false;
-      if (session !== null) {
-        enable = true;
-        this.navCtrl.navigateRoot('Retos');
-      }
-      this.menuCtrl.enable(enable);
-    });
-  }
+  // listenAuthState() {
+  //   this.auth.getAuthState()
+  //   .subscribe(session => {
+  //     console.log(session);
+  //     let enable = false;
+  //     if (session !== null) {
+  //       enable = true;
+  //       this.navCtrl.navigateRoot('/home');
+  //     }
+  //     this.menuCtrl.enable(enable);
+  //   });
+  // }
 }
