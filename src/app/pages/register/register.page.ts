@@ -6,8 +6,10 @@ import { AuthService } from './../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AlertController} from '@ionic/angular';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Router} from '@angular/router';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +32,8 @@ export class RegisterPage implements OnInit {
     private auth: AuthService,
     private navCtrl: NavController,
     public afAuth: AngularFireAuth,
+    public afstore: AngularFirestore,
+    public user: UserService,
     public alertController: AlertController,
     public router: Router
   ) {
@@ -37,6 +41,16 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  // VENTANA DE ALERTA
+  async presentAlert(title: string, content: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: content,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
   async register() {
@@ -52,28 +66,39 @@ export class RegisterPage implements OnInit {
 
     if (password !== cpassword) {
       // return console.log('Password no coincide');
-      return this.showAlert('Error', 'Las contraseñas no coinciden');
+      return this.presentAlert('Error', 'Las contraseñas no coinciden');
     }
     try {
       const res = await this.afAuth.auth.createUserWithEmailAndPassword( username, password);
-      console.log('Resultado del registro', res);
-      this.showAlert('Correcto', 'Bienvenido!.El registro se realizó correctamente');
-      // this.router.navigate(['/tab']);
-      this.router.navigate(['/home']);
+      // console.log('Resultado del registro', res);
+      // DAR DE ALTA LOS DATOS EN FIREBASE
+      // CREAMOS UN DOCUMENTO DENTRO DE LA COLECCIÓN USER
+      this.afstore.doc(`users/${res.user.uid}`).set({
+        username,
+        firstName,
+        lastName,
+        stravaUID
+
+      });
+
+
+      // Añadimos los datos del usuario
+      this.user.setUser({
+        username,
+        firstName,
+        lastName,
+        stravaUID,
+        uid: res.user.uid
+      });
+
+      // MENSAJE DE ALERTA
+      this.presentAlert('Correcto', 'Bienvenido!.El registro se realizó correctamente');
+      this.router.navigate(['/tabs']);
+      // this.router.navigate(['/home']);
     } catch (err) {
       console.log('Error de registro', err);
-      this.showAlert('Error', 'Fallo en el registro');
+      this.presentAlert('Error', 'Fallo en el registro');
     }
-    // console.log(this.form.value);
-    // this.auth.register( value.email, value.password)
-    // .then((rta) => {
-
-    //   // Redirección una vez registrado
-    //   this.navCtrl.navigateRoot('home');
-    // })
-    // .catch(error => {
-    //   console.log(error);
-    // });
   }
 
   private buildForm() {
@@ -89,18 +114,7 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  // Mostrar alertas
-
-  async showAlert(header: string, message: string) {
-
-    const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
+  // 
 
 
 

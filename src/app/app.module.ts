@@ -45,6 +45,7 @@ import { RetoComponent } from './components/reto/reto.component';
 
 // temporales
 import {NormasService } from './services/normas.service';
+import { UserService } from 'src/app/services/user.service';
 
 registerLocaleData(localeEs, 'es');
 
@@ -72,6 +73,7 @@ registerLocaleData(localeEs, 'es');
   providers: [
     StatusBar,
     NormasService,
+    UserService,
     {provide: LOCALE_ID, useValue: 'es'},
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
