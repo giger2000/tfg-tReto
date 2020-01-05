@@ -12,7 +12,9 @@ import { HttpClient} from '@angular/common/http';
 export class ActivityService {
 
 
-  constructor( private http: HttpClient) { }
+  constructor( private http: HttpClient) { 
+
+  }
 
   // Recupera los datos de un JSON local
 

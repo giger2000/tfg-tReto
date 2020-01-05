@@ -1,6 +1,11 @@
 export interface UserModel {
     username: string;
-    userSurname?: string;
+    firstName?: string;
+    lastName?: string;
+    correoE?: string;
     uid: string;
-    userStrava?: string;
+    stravaUID?: string;
+    photoURL?: string;
+
+
 }

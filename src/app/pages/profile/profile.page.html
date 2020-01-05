@@ -5,40 +5,42 @@
           
 		<ion-menu-button></ion-menu-button>
   </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title>Perfil </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="padding">
 
-  <!--  <app-loading *ngIf="!posts"></app-loading> -->
+  prueba
+  
 
-	<!-- <div id="profile-info" *ngIf="username">
-		<ion-grid>
-			<ion-row>
-				<ion-col size="4" class="user-image">
-					<ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
-				</ion-col>
-				<ion-col size="8">
-					<p>{{ username }}</p>
-					<ion-button shape="round" color="primary" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-	</div> -->
+	<div *ngIf="auth.user$ | async as user; then authenticated else guest">
+
+	<!-- Usuario no está conectado  -->
+	<ng-template #guest>
+		<h3> Bienvenido, INVITADO</h3>
+		<p> Deberías identificarte para empezar...</p>
+		<ion-img src='./assets/images/profile/noFoto.png'></ion-img>
 
 
-	<div id="images">
-		<div class="image">
-      <ion-card> 
-     
-        <ion-img src='./assets/images/profile/noFoto.png'></ion-img>
-      </ion-card>
-      <ion-content>
 
-      </ion-content>
-			<!-- <img (click)="goTo(post)" class="main-image" src="https://ucarecdn.com/{{ post }}/-/scale_crop/200x200/center/" /> -->
-		</div>
+	</ng-template>
+
+		<!-- Usuario SI está conectado  -->
+	<ng-template #authenticated>
+		SIII
+			<div *ngIf="auth.user$ | async as user ">
+				<h3> Bienvenido, {{ user.firstName}}</h3>
+			<ion-img [src]="user.photoURL"></ion-img>
+				<p> UID: {{ user.uid }}</p>
+				<p> Strava UID: {{ user.stravaUID }}</p>
+				
+				<p> Deberías identificarte para empezar...</p> 
+
+			</div>
+		
+	</ng-template>
+
 	</div>
 
 </ion-content>

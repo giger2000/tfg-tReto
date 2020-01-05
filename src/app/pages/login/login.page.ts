@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.menuCtrl.enable(false);
+    this.menuCtrl.enable(false);
   }
 
   // VENTANA DE ALERTA
@@ -56,10 +56,9 @@ export class LoginPage implements OnInit {
   }
 
   async doLogin() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
     const value = this.form.value;
     // nuevo
-    // const { username, password} = this;
     const username = value.email;
     const password = value.password;
 
@@ -79,7 +78,10 @@ export class LoginPage implements OnInit {
       console.dir(err);
       if (err.code === 'auth/user-not-found') {
         console.log ('Usuario no encontrado');
-        this.presentAlert('Error', 'Usuario no registrado'); // TODO poner alert controller
+        this.presentAlert('Error', 'Usuario no registrado');
+      } else if (err.code === 'auth/wrong-password') {
+        this.presentAlert('Error', 'Datos de acceso incorrectos');
+
       }
     }
 

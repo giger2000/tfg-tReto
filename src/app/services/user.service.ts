@@ -8,7 +8,9 @@ interface User {
   firstName?: string,
   lastName?: string,
   stravaUID?: string,
-  uid: string
+  correoE?: string,
+  uid: string,
+  photoURL?: string
 }
 
 @Injectable({
