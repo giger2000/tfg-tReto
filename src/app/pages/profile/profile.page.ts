@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // Firebase
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from './../../services/user.service';
+import { AuthService } from './../../services/auth.service';
 // import { Router } from '@angular/router';
 // import { Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
@@ -13,11 +14,19 @@ import { UserService } from './../../services/user.service';
 })
 export class ProfilePage implements OnInit {
 
-  userPosts;
+  // userPosts;
+
+  user: UserService = {
+    name: '';
+    email: '',
+    phptoUrl: ''
+  };
 
   constructor(
               private afs: AngularFirestore,
-              private user: UserService) {
+              private user: UserService,
+               private auth: AuthService
+               ) {
                 const posts = afs.doc(`users/${user.getUID()}`);
                 this.userPosts = posts.valueChanges();
                 console.log('UID de usuario ', posts);

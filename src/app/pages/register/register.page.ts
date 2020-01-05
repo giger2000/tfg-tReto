@@ -93,11 +93,12 @@ export class RegisterPage implements OnInit {
 
       // MENSAJE DE ALERTA
       this.presentAlert('Correcto', 'Bienvenido!.El registro se realizó correctamente');
-      this.router.navigate(['/tabs']);
-      // this.router.navigate(['/home']);
+      //this.router.navigate(['/tabs']);
+      this.router.navigate(['/home']);
     } catch (err) {
       console.log('Error de registro', err);
-      this.presentAlert('Error', 'Fallo en el registro');
+      if (err.code === 'auth/email-already-in-use')
+      this.presentAlert('Error', 'Este usuario ya existe');
     }
   }
 

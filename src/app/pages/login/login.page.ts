@@ -13,6 +13,7 @@ import { auth } from 'firebase/app';
 import { RegisterPage} from '../register/register.page';
 import { UserService } from './../../services/user.service';
 
+import { AlertController} from '@ionic/angular';
 
 
 @Component({
@@ -33,14 +34,25 @@ export class LoginPage implements OnInit {
     private auth: AuthService,
     private navCtrl: NavController,
     public user: UserService,
-    public router: Router
-    // private fcm: FcmService
+    public router: Router,
+    public alertController: AlertController,
+    
   ) {
     this.buildForm();
   }
 
   ngOnInit() {
     // this.menuCtrl.enable(false);
+  }
+
+  // VENTANA DE ALERTA
+  async presentAlert(title: string, content: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: content,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
   async doLogin() {
@@ -66,7 +78,8 @@ export class LoginPage implements OnInit {
     } catch (err) {
       console.dir(err);
       if (err.code === 'auth/user-not-found') {
-        console.log ('Usuario no encontrado'); // TODO poner alert controller
+        console.log ('Usuario no encontrado');
+        this.presentAlert('Error', 'Usuario no registrado'); // TODO poner alert controller
       }
     }
 
