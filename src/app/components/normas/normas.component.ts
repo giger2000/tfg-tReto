@@ -12,7 +12,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 // Ionic loading
 import { LoadingController } from '@ionic/angular';
 
-import { faTrashAlt, faPencilAlt} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faTrashAlt, faPencilAlt, faRunning, faBiking, faMountain, faHistory, faRoute } from '@fortawesome/free-solid-svg-icons';
 
 // Formularios
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
@@ -30,8 +31,13 @@ import { Platform } from '@ionic/angular';
 })
 export class NormasComponent implements OnInit {
   // Icono papelera
-  faTrash = faTrashAlt;
-  faPencil = faPencilAlt;
+  faTrash = faTrashAlt; // Borrar
+  faPencil = faPencilAlt; // Editar
+  // iconos deporte
+  // faRunning = faRunning; // Running
+  faHistory = faHistory; // Tiempo
+  faMountain = faMountain; // Desnivel
+  faRoute = faRoute; // Distancia
   // Para los cargadores de alertas iniciales
   cargando = false;
 
@@ -58,6 +64,12 @@ export class NormasComponent implements OnInit {
       this.buildForm();
       this.cargando = true;
 
+      // Lista deportes STRAVA : AlpineSki, BackcountrySki, 
+      // Canoeing, Crossfit, EBikeRide, Elliptical, Golf, Handcycle, Hike, 
+      // IceSkate, InlineSkate, Kayaking, Kitesurf, NordicSki, Ride, RockClimbing, 
+      //RollerSki, Rowing, Run, Sail, Skateboard, Snowboard, Snowshoe, Soccer, StairStepper, 
+      //StandUpPaddling, Surfing, Swim, Velomobile, VirtualRide, VirtualRun, Walk, WeightTraining,
+      // Wheelchair, Windsurf, Workout, Yoga
          // Select DEPORTE
       this.platform.ready().then(() => {
           this.deporte = [{ deporte: 'BTT'}, { deporte: 'Road'}, { deporte: 'Running'}, { deporte: 'Cinta'}, { deporte: 'Spinning'} ];
@@ -110,7 +122,9 @@ export class NormasComponent implements OnInit {
     console.log('Estamos en edición', this.editNorma);
   }
 
-  agregarNormaEdita() {
+  agregarNormaEdita(norma) {
+    console.log('editamos y almacenamos norma');
+    this.editNorma = norma;
     this.normasService.editarNorma(this.editNorma);
   }
 

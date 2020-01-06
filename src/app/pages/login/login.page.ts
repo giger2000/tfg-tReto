@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Formularios
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 // Para controlar la aparición del menu sólo si estás logeado
 import { MenuController, NavController } from '@ionic/angular';
@@ -10,6 +11,9 @@ import { AuthService } from './../../services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { RegisterPage} from '../register/register.page';
+import { UserService } from './../../services/user.service';
+
+import { AlertController} from '@ionic/angular';
 
 
 @Component({
@@ -28,48 +32,60 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private menuCtrl: MenuController,
     private auth: AuthService,
-    private navCtrl: NavController
-    // private fcm: FcmService
+    private navCtrl: NavController,
+    public user: UserService,
+    public router: Router,
+    public alertController: AlertController,
+    
   ) {
     this.buildForm();
   }
 
   ngOnInit() {
-    // this.menuCtrl.enable(false);
+    this.menuCtrl.enable(false);
+  }
+
+  // VENTANA DE ALERTA
+  async presentAlert(title: string, content: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: content,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
   async doLogin() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
     const value = this.form.value;
     // nuevo
-    // const { username, password} = this;
     const username = value.email;
     const password = value.password;
 
     try {
      const res = await this.afAuth.auth.signInWithEmailAndPassword( username, password); // eliminar gmail final
+
+     // Almacenar datos usuario en Firebase
+     if (res.user) {
+      this.user.setUser({
+        username,
+        uid: res.user.uid
+      });
+      this.router.navigate(['/home']);
+      // this.router.navigate(['/tabs']);
+    }
     } catch (err) {
       console.dir(err);
       if (err.code === 'auth/user-not-found') {
-        console.log ('Ussuario no encontrado'); // TODO poner alert controller
+        console.log ('Usuario no encontrado');
+        this.presentAlert('Error', 'Usuario no registrado');
+      } else if (err.code === 'auth/wrong-password') {
+        this.presentAlert('Error', 'Datos de acceso incorrectos');
+
       }
     }
 
-    // this.auth.login(value.email, value.password)
-    // .then ((rta) => {
-    //   // redirect a la página principal
-    //   this.navCtrl.navigateForward('home');
-    // })
-    // .catch(error => {
-    //   console.log (error);
-    // });
-    // // await this.fcm.getToken(rta.user.email);
-    // this.navCtrl.navigateForward('home');
   }
-
-  // goToRegisterPage() {
-  //   this.navCtrl.navigateForward('register');
-  // }
 
   private buildForm() {
     this.form = this.fb.group({

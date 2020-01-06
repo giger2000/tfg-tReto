@@ -1,33 +1,36 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Acceder</ion-title>
+  <ion-toolbar >
+    <ion-title>T-RETO</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 
-<ion-content padding>
+<ion-content class="padding bg-img">
   <form [formGroup]="form" (ngSubmit)="doLogin()">
     <ion-list>
   
       <ion-item>
-        <ion-label position="floating">
+        <ion-label position="floating" color="dark">
+          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
           Nombre de Usuario (email)
         </ion-label>
         <ion-input formControlName="email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">
+        <ion-label position="floating" color="dark">
+          <ion-icon ios="ios-unlock" md="md-unlock"></ion-icon>
           Contraseña
+
         </ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
     </ion-list>
   
-    <ion-button fill="solid" expand="block" color="primary" [disabled]="form.invalid" type="submit">Acceder</ion-button>
+    <ion-button fill="solid" expand="block" color="dark" [disabled]="form.invalid" type="submit">Acceder</ion-button>
     <br>
     <div>
-      <p>¿Todavía sin cuenta? <a (click)="goRegisterPage()">Crear una cuenta</a></p>
+      <p class="ion-text-center" >¿Todavía sin cuenta?<a (click)="goRegisterPage()">Crear una cuenta</a></p>
     </div>
     <br>
   

@@ -1,25 +1,19 @@
 
 <ion-header>
-  <ion-buttons slot="start">
-    <ion-menu-button></ion-menu-button>
-</ion-buttons>
   <ion-toolbar>
-    <ion-title>NORMAS</ion-title>
-  </ion-toolbar>
+    <ion-buttons slot="start">
+            
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+      <ion-title>NORMAS</ion-title>
+      <i class="fas fa-running"></i>
+    </ion-toolbar>
+
+
 
 </ion-header>
 
 <ion-content>
-<!-- // Botón más -->
-  <!-- <ion-fab horizontal="center" vertical="bottom" slot="fixed">
-    <ion-fab-button color="danger">
-      <ion-icon name="add" ></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
-
-
-   <!-- {{cargando}}  -->
- <!-- {{(normas | async)?.length}} --> 
 
 
 
@@ -30,8 +24,13 @@
         <ion-item-divider sticky>
             <ion-avatar slot="start">
                
-                <ion-img *ngIf="norma.deporte==='Run'" src="./../../../assets/images/actividades/avatar/runner.jpg"></ion-img>
-                <ion-img *ngIf="norma.deporte==='BTT'" src="./../../../assets/images/actividades/avatar/btt.jpg"></ion-img>
+                 <ion-img *ngIf="norma.deporte==='Running'" src="./../../../assets/images/actividades/avatar/runner.jpg"></ion-img> 
+                 <ion-img *ngIf="norma.deporte==='BTT'" src="./../../../assets/images/actividades/avatar/btt.jpg"></ion-img> 
+                 <ion-img *ngIf="norma.deporte==='Spinning'" src="./../../../assets/images/actividades/avatar/spinning.jpg"></ion-img> 
+                 <ion-img *ngIf="norma.deporte==='Cinta'" src="./../../../assets/images/actividades/avatar/cinta.jpg"></ion-img> 
+                 <ion-img *ngIf="norma.deporte==='Road'" src="./../../../assets/images/actividades/avatar/road.jpg"></ion-img> 
+                <!-- <fa-icon *ngIf="norma.deporte==='BTT'" [icon]="faBiking" size="2x" [styles]="{'color': 'green'}" ></fa-icon> --> 
+                <!-- <fa-icon *ngIf="norma.deporte==='Running'" [icon]="faRunning" size="2x" [styles]="{'color': 'brown'}"></fa-icon> -->
             </ion-avatar>
            
           
@@ -55,7 +54,10 @@
                     </ion-row>
                       <ion-row>
                       <ion-col align-self-start>
-                        <ion-label><p>{{norma.criterio }}</p></ion-label>
+                        <ion-label><p><fa-icon *ngIf="norma.criterio==='Desnivel'" [icon]="faMountain" [styles]="{'color': 'grey'}"></fa-icon>
+                          <fa-icon *ngIf="norma.criterio==='Tiempo'" [icon]="faHistory" [styles]="{'color': 'grey'}"></fa-icon>
+                          <fa-icon *ngIf="norma.criterio==='Distancia'" [icon]="faRoute" [styles]="{'color': 'grey'}"></fa-icon>
+                          {{norma.criterio }}</p></ion-label>
                          
                       </ion-col>
                       <ion-col align-self-start>
@@ -83,7 +85,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ editNorma.id}}</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar Norma</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -166,7 +168,7 @@
         <!-- fin formulario -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Editar</button>
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Editar</button>
       
       </div>
     </div>

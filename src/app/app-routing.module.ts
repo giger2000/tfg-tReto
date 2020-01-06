@@ -5,6 +5,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NormasComponent } from './components/normas/normas.component';
 import { RetoComponent } from './components/reto/reto.component';
 
+// Servicios
+
+import { AuthService } from './services/auth.service';
+
 
 
 const routes: Routes = [
@@ -15,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+    canActivate: [AuthService]
   },
 
   {
@@ -28,19 +33,41 @@ const routes: Routes = [
   },
   {
     path: 'activities',
-    loadChildren: () => import('./pages/activities/activities.module').then( m => m.ActivitiesPageModule)
+    loadChildren: () => import('./pages/activities/activities.module').then( m => m.ActivitiesPageModule),
+    canActivate: [AuthService]
   },
   {
     path: 'retos-firebase',
-    loadChildren: () => import('./pages/retos-firebase/retos-firebase.module').then( m => m.RetosFirebasePageModule)
+    loadChildren: () => import('./pages/retos-firebase/retos-firebase.module').then( m => m.RetosFirebasePageModule),
+    canActivate: [AuthService]
   },
   {
-    path : 'normas', component: NormasComponent
+    path : 'normas', component: NormasComponent,
+    canActivate: [AuthService]
   },
   {
-    path : 'reto', component: RetoComponent
+    path : 'reto', component: RetoComponent,
+    canActivate: [AuthService]
+  },
+  // {
+  //   path: 'tabs',
+  //   loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+  //    canActivate: [AuthService]
+  // },
+  // {
+  //   path: 'feed',
+  //   loadChildren: () => import('./feed/feed.module').then( m => m.FeedPageModule),
+  //   canActivate: [AuthService]
+  // },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthService]
   }
-  
+  // {
+  //   path: 'uploader',
+  //   loadChildren: () => import('./uploader/uploader.module').then( m => m.UploaderPageModule)
+  // }
 
 
 ];

@@ -34,6 +34,11 @@ export class AppComponent {
       title: 'Retos',
       url: '/retos-firebase',
       icon: 'trophy'
+    },
+    {
+      title: 'Perfil',
+      url: '/profile',
+      icon: 'contact'
     }
     // {
     //   title: 'Login Ionic',

@@ -1,9 +1,43 @@
 <ion-header>
+
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+	<ion-buttons slot="start">
+          
+		<ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-title>Perfil </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="padding">
+
+<div *ngIf="auth.user$ | async as user; then authenticated else guest">
+	
+	<ng-template #guest>
+		<h3> Bienvenido, INVITADO</h3>
+		<p> Deberías identificarte para empezar...</p>
+		<ion-img src='./assets/images/profile/noFoto.png'></ion-img>
+	</ng-template>
+
+</div> 
+	
+	<ng-template #authenticated>
+		<div *ngIf="auth.user$ | async as user ">
+			<div id="profile-bg"></div>
+			<div id="content">
+			  <div id="profile-info">
+				<img id="profile-image" [src]="user.photoURL">
+				<h3 id="profile-name">{{user.firstName}}</h3>
+				
+			  </div>
+
+
+			</div>
+		</div>
+	
+		
+	</ng-template>
+
+
 
 </ion-content>
