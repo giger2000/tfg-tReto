@@ -13,7 +13,7 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content class="padding">
 
 
 
@@ -47,25 +47,31 @@
                         
                       </ion-col>
                       <div class="float-right" (click)="editar(norma)" class="mx-3" data-toggle="modal" data-target="#exampleModal">
-                        <fa-icon [icon]="faPencil"></fa-icon>
+                      
+                        <ion-icon name="brush"></ion-icon>
                       </div>
-                      <div class="float-right"  (click)="eliminar(norma)"><fa-icon [icon]="faTrash"></fa-icon></div>
+                      <div class="float-right"  (click)="eliminar(norma)">
+                        <!--  <fa-icon [icon]="faTrash"></fa-icon> --> 
+                        <ion-icon name="trash"></ion-icon>
+                      </div>
                       
                     </ion-row>
                       <ion-row>
                       <ion-col align-self-start>
-                        <ion-label><p><fa-icon *ngIf="norma.criterio==='Desnivel'" [icon]="faMountain" [styles]="{'color': 'grey'}"></fa-icon>
-                          <fa-icon *ngIf="norma.criterio==='Tiempo'" [icon]="faHistory" [styles]="{'color': 'grey'}"></fa-icon>
-                          <fa-icon *ngIf="norma.criterio==='Distancia'" [icon]="faRoute" [styles]="{'color': 'grey'}"></fa-icon>
+                        <ion-label><p>
+                          <ion-icon *ngIf="norma.criterio==='Desnivel'" name="pulse"></ion-icon>
+                          <ion-icon *ngIf="norma.criterio==='Tiempo'" name="timer"></ion-icon>
+                          <ion-icon *ngIf="norma.criterio==='Distancia'" name="git-network"></ion-icon>
+                        
                           {{norma.criterio }}</p></ion-label>
                          
                       </ion-col>
                       <ion-col align-self-start>
-                        <ion-label><small>Mínimo: {{norma.minValor }}</small></ion-label>
+                        <ion-label><small>Min.: {{norma.minValor }}</small></ion-label>
                          
                       </ion-col>
                       <ion-col align-self-start>
-                        <ion-label><small>Coeficiente: {{norma.coeficiente }}</small></ion-label>
+                        <ion-label><small>Coef.: {{norma.coeficiente }}</small></ion-label>
                          
                       </ion-col>
                     </ion-row>
@@ -103,9 +109,6 @@
               </ion-input>
           </ion-item>
      
-            <!-- <ion-text *ngIf="nombreField.errors && nombreField.dirty" color="danger">
-              <small *ngIf="nombreField.hasError('required')">Indica un nombre</small> 
-          </ion-text>-->
    
          
           <!-- select -->

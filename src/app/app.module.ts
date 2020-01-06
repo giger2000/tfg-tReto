@@ -41,8 +41,6 @@ import { NormaComponent } from './components/norma/norma.component';
 import { RetoComponent } from './components/reto/reto.component';
 
 
-
-
 // temporales
 import {NormasService } from './services/normas.service';
 import { UserService } from 'src/app/services/user.service';

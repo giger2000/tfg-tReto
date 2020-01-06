@@ -33,7 +33,7 @@ export class ActivitiesPage implements OnInit {
     this.puntuar();
   }
 
-  puntuar(){
+  puntuar() {
     this.activities.length;
     console.log( this.activities.length);
   }

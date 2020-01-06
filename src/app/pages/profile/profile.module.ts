@@ -8,6 +8,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,4 +18,6 @@ import { ProfilePage } from './profile.page';
   ],
   declarations: [ProfilePage]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule {
+
+}
