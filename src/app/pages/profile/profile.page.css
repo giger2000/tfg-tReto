@@ -24,10 +24,12 @@
   width: 100%;
   z-index: 2;
   text-align: center;
+  color: #7c7c7c;
 }
 #profile-name {
   color: #444;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin: 2px auto;
 }
 #profile-image {
   display: block;

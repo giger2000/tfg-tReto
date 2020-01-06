@@ -31,14 +31,14 @@ export class ProfilePage implements OnInit {
   user$: Observable<UserModel[]>;
   actividad$: Observable<Actividad[]>;
 
-  actividadesTotal;
+  // actividadesTotal;
 
   cargando = false;
 
   constructor(
               private afs: AngularFirestore,
               public loadingController: LoadingController,
-              private act: ActivityService,
+              public act: ActivityService,
               public auth: AuthService,
               public user: UserService,
               private afAuth: AngularFireAuth
@@ -53,27 +53,16 @@ export class ProfilePage implements OnInit {
                                   .doc(`${this.afAuth.auth.currentUser.uid}`)
                                   .collection('activities');
                 this.actividad$ = this.activityRef.valueChanges();
+
                 
               }
-             
-
 
   ngOnInit() {
-    
-     const actividadesTotal = this.getTotalActividades();
-     console.log('Total : ',  actividadesTotal);
+    // this.cargando = false;
+    // console.log(this.act.getActivitiesCollection());
+    // console.log('actividades ',this.act.);
+
   }
-
-  getTotalActividades() {
-   
-    return this.activityRef.get.length;
-    
-   
-  }
-
-
-
-
 
 
 }

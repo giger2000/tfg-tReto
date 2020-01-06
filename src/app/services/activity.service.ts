@@ -27,13 +27,6 @@ export class ActivityService {
                private afs: AngularFirestore) {
 
                 // leer docs user
-          
-  //   afs.collection('users').get().subscribe((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //         console.log(`${doc.id} => ${doc.data().firstName}`);
-  //         // console.log(`${doc.id} => ${doc.data()}`);
-  //     });
-  // });
 
 
 }
@@ -47,35 +40,30 @@ export class ActivityService {
   }
 
 
-  getActivity(activityID: string) {
 
-    // return this._httpClient.get(API + '/id/' + activityID);
+  
 
-  }
-  getAllActivities() {
-    // return this._httpClient.get(API);
-  }
+  // getActivitiesCollection() {
+  //   // Leer todas las actividades del user conectado
+  //   const actividadesUsuario = this.afs.collection('users')
+  //                           .doc(`${this.afAuth.auth.currentUser.uid}`)  // recibimos UID del user actual
+  //                           .collection('activities')
+  //                           .get()
+  //                           .subscribe((querySnapshot) => {
+  //                               querySnapshot.forEach((doc) => {
+  //                               });
 
-  getActivitiesCollection() {
-    // Leer todas las actividades del user conectado
-    const actividadesUsuario = this.afs.collection('users')
-                            .doc(`${this.afAuth.auth.currentUser.uid}`)  // recibimos UID del user actual
-                            .collection('activities')
-                            .get()
-                            .subscribe((querySnapshot) => {
-                                querySnapshot.forEach((doc) => {
-                                });
-
-                                var totalActividades = querySnapshot.docs.length;
+  //                               var totalActividades = querySnapshot.docs.length;
                                 
-                            });
-    return actividadesUsuario;
-  }
+  //                           });
+  //   return actividadesUsuario;
+  // }
 
-  getTotalActividades() {
-    // console.log('tamaño',this.getActivitiesCollection.length);
-    // return this.getActivitiesCollection.length;
+  getCalcularTotales(actividad){
+    return actividad.subscribe(data => {
+      const actividadesTotal = data.length;
+      console.log('nuevo total ', actividadesTotal);
+    });
   }
-
 
 }
