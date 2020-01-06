@@ -11,36 +11,33 @@
 
 <ion-content class="padding">
 
-  prueba
-  
-
-	<div *ngIf="auth.user$ | async as user; then authenticated else guest">
-
-	<!-- Usuario no está conectado  -->
+<div *ngIf="auth.user$ | async as user; then authenticated else guest">
+	
 	<ng-template #guest>
 		<h3> Bienvenido, INVITADO</h3>
 		<p> Deberías identificarte para empezar...</p>
 		<ion-img src='./assets/images/profile/noFoto.png'></ion-img>
-
-
-
 	</ng-template>
 
-		<!-- Usuario SI está conectado  -->
+</div> 
+	
 	<ng-template #authenticated>
-		SIII
-			<div *ngIf="auth.user$ | async as user ">
-				<h3> Bienvenido, {{ user.firstName}}</h3>
-			<ion-img [src]="user.photoURL"></ion-img>
-				<p> UID: {{ user.uid }}</p>
-				<p> Strava UID: {{ user.stravaUID }}</p>
+		<div *ngIf="auth.user$ | async as user ">
+			<div id="profile-bg"></div>
+			<div id="content">
+			  <div id="profile-info">
+				<img id="profile-image" [src]="user.photoURL">
+				<h3 id="profile-name">{{user.firstName}}</h3>
 				
-				<p> Deberías identificarte para empezar...</p> 
+			  </div>
+
 
 			</div>
+		</div>
+	
 		
 	</ng-template>
 
-	</div>
+
 
 </ion-content>
