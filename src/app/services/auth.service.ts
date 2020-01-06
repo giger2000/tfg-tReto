@@ -19,15 +19,17 @@ import {UserModel} from './../interface/user.model';
 })
 export class AuthService implements CanActivate {
   // userPosts 
+  // usersRef;
   user$: Observable<UserModel>;
   constructor(
               private router: Router,
               public userS: UserService,
               private afAuth: AngularFireAuth,
-              private afs: AngularFirestore,
-              private afcg: AngularFirestoreCollectionGroup,
+              private afs: AngularFirestore
+              // private afcg: AngularFirestoreCollectionGroup
 
               ) {
+                
                 // const userActual = afAuth.auth.currentUser;
 
                 // afcg.collectionGroup("activities").where("user", "==", userActual.uid).get()
@@ -38,8 +40,8 @@ export class AuthService implements CanActivate {
                 //     });
                 // });
                 
-                //  const activities = afs.doc(`users/${userS.getUID()}`);
-                // this.userPost = posts.valueChanges()
+                // const activities = afs.doc(`users/${userS.getUID()}`);
+                // this.usersRef = activities.valueChanges();
                 this.user$ = this.afAuth.authState.pipe(
                   switchMap( user => {
                     if (user) {
@@ -49,7 +51,11 @@ export class AuthService implements CanActivate {
                     }
                   })
                 );
+                // const usersRef = afs.doc(`users/${userS.getUID()}`);
+                // const activities = usersRef.collection('activities');
+                // console.log('actividades',activities);
               }
+              
 
   async canActivate(route) {
     if (await this.userS.isAuthenticated()) {

@@ -50,7 +50,7 @@ this.itemDoc = this.db.doc<NormaModel>(`norma/${norma.id}`);
 this.itemDoc.delete();
 }
 
-editarNorma(norma)  {
+editarNorma(norma: NormaModel)  {
   this.itemDoc = this.db.doc<NormaModel>(`norma/${norma.id}`);
   this.itemDoc.update(norma);
   }

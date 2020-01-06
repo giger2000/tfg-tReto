@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { first } from 'rxjs/operators';
 import { auth } from 'firebase/app';
+// import { AuthService} from './auth.service';
 
 interface User {
   username: string,
@@ -62,6 +63,7 @@ export class UserService {
     if (!this.user) {
       if (this.afAuth.auth.currentUser) {
         const user = this.afAuth.auth.currentUser;
+        console.log('uid user ', user);
         this.setUser({
           username: user.email.split('@')[0],
           uid: user.uid // Obtenemos el nombre de usuario registrado
