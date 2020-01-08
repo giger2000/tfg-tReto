@@ -1,0 +1,7 @@
+.iconSize {
+  font-size: 2rem;
+}
+ion-card-content,
+ion-card-header {
+  padding: 5px 20px !important;
+}

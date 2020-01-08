@@ -98,7 +98,7 @@
       </div>
       <div class="modal-body">
         <!-- FORMULARIO -->
-        <form [formGroup]="forma" (ngSubmit)="agregarNormaEdita()">
+        <form [formGroup]="forma" (ngSubmit)="agregarNormaEdita(forma)">
         
           <ion-item>
               <ion-label position="stacked">Nombre de la norma</ion-label>
@@ -202,4 +202,5 @@ Espere por favor
 </div> 
 
 <app-norma></app-norma>
+
 </ion-content>

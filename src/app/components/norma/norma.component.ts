@@ -27,7 +27,7 @@ export class NormaComponent {
 
   forma: FormGroup;
 
-  //para insertar tarea necesitamos instancia
+  // para insertar tarea necesitamos instancia
   normasCollection: AngularFirestoreCollection<NormaModel>;
   $normas: Observable<NormaModel[]>; // porque el array varía en tiempo real
 
@@ -83,11 +83,10 @@ export class NormaComponent {
   }
 
 
-  guardarCambios(forma) {
+  guardarCambios() {
 
     this.normasService.agregarNorma(this.forma.value);
 
-  
     this.forma.reset({
       nombre: '',
       deporte: 'BTT',
