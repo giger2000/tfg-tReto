@@ -38,21 +38,22 @@ import { registerLocaleData } from '@angular/common';
 // Componentes
 import { NormasComponent } from './components/normas/normas.component';
 import { NormaComponent } from './components/norma/norma.component';
+// import { ActividadComponent } from './components/actividad/actividad.component';
 import { RetoComponent } from './components/reto/reto.component';
-
-
 
 
 // temporales
 import {NormasService } from './services/normas.service';
 import { UserService } from 'src/app/services/user.service';
 
+  
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [AppComponent,
                   NormaComponent,
                   NormasComponent,
+                  // ActividadComponent,
                   RetoComponent
                   ],
   entryComponents: [],
