@@ -7,14 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
+import { ActividadComponent } from './../../components/actividad/actividad.component';
+
 
 @NgModule({
+  declarations: [ProfilePage,
+    ActividadComponent
+    ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     ProfilePageRoutingModule
-  ],
-  declarations: [ProfilePage]
+  ]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule {
+
+}

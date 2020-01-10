@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Actividad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+   
+
+
+  <div *ngIf="auth.user$ | async as user">
+ 
+    <ion-row class="animated fadeIn faster">
+      <ion-col>
+     
+    <form  [formGroup]="form" (ngSubmit)="guardar()">
+  
+            <ion-item>
+              <ion-label position="stacked">Atleta</ion-label>
+              <ion-input  type="text" 
+                          disabled
+                          placeholder="ID Atleta"
+                          formControlName="athlete">
+              </ion-input>
+
+       
+              </ion-item>
+                <ion-item>
+                  <ion-label position="stacked">Nombre de la actividad</ion-label>
+                  <ion-input  type="text" 
+                              required
+                              placeholder="Nombre de la actividad"
+                              formControlName="name"
+                              >
+                  </ion-input>
+               
+              </ion-item>
+             <ion-item>
+                    <ion-label position="stacked">Fecha</ion-label>
+                    <ion-datetime  
+                                  placeholder="Fecha de inicio"
+                                  formControlName="start_date"
+                                  displayFormat="DD/MM/YYYY"
+                                  required></ion-datetime>
+            
+                  
+              </ion-item>
+            
+
+              <ion-item>
+                <ion-label position="stacked">Distancia (km)</ion-label>
+                <ion-input  type="number" 
+                            placeholder="Indicar con decimales"
+                            formControlName="distance"
+                           >
+                </ion-input>
+            
+              
+            </ion-item>
+            <ion-item>
+              <ion-label>Deporte</ion-label>
+          
+              <ion-select interface="popover" 
+              formControlName="type" 
+              placeholder="Selecciona deporte">
+
+              <ion-select-option *ngFor="let item of type" [value]= "item.type">{{item.type}}</ion-select-option> 
+
+            </ion-select>
+            
+          </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">Desnivel (m)</ion-label>
+                <ion-input  type="number" 
+                            placeholder="Indicar con decimales"
+                            formControlName="total_elevation_gain"
+                           >
+                </ion-input>
+            
+              
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Tiempo</ion-label>
+              <ion-input  type="number" 
+                          placeholder="Tiempo en minutos"
+                          formControlName="moving_time"
+                         s>
+              </ion-input>
+          
+            
+          </ion-item>
+
+            
+          <ion-row>
+            <ion-col class="ion-text-left">
+              <ion-button type="submit" [disabled]="form.invalid" expand="block">
+                <ion-icon slot="start" name="archive" ></ion-icon>
+                Guardar
+              </ion-button> 
+          
+            </ion-col>
+         
+          </ion-row>
+              
+
+             
+          </form>
+      </ion-col>
+    </ion-row> 
+    </div>
+</ion-content>
+
+
+
+

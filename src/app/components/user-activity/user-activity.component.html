@@ -1,0 +1,93 @@
+<p>
+  user-activity works!
+</p>
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        
+            <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    
+  <ion-title>Actividades</ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-button routerLink="/activity/nuevo">AGREGAR</ion-button>
+    <!-- <ion-item-group *ngFor="let actividad of activities">-->
+      <ion-item-group >
+        <ion-item-divider sticky>
+            <ion-avatar slot="start">
+
+              <!-- *ngIf="actividad.type==='Run'"
+              *ngIf="actividad.type==='Ride'"  -->
+               
+                <ion-img  src="./../../../assets/images/actividades/avatar/runner.jpg"></ion-img>
+                <!-- <ion-img src="./../../../assets/images/actividades/avatar/btt.jpg"></ion-img> -->
+            </ion-avatar>
+           
+          
+                  <ion-grid>
+            
+                  <ion-row>
+                      <ion-col align-self-start>
+                        <ion-label><h2>actividad.name</h2></ion-label>
+                       </ion-col>
+                      
+                      <ion-col align-self-end>
+                        <ion-label><h3>actividad.start_date | date: 'mediumDate' </h3></ion-label>
+                         
+                      </ion-col>
+                     
+                    </ion-row>
+                    <ion-row>
+
+                        <ion-col align-self-end>
+                          <ion-label>
+                             <b>Dist:</b> actividad.distance <abbr class="unit" title="metros"> m</abbr>
+                             </ion-label>
+                        </ion-col>
+
+                        <ion-col align-self-start>
+                            <ion-label><b>Desn:</b> actividad.total_elevation_gain<abbr class="unit" title="minutos"> m</abbr>
+                            </ion-label>
+                           </ion-col>
+
+                        <ion-col align-self-end>
+                            <ion-label><b>Tmp:</b>actividad.moving_time<abbr class="unit" title="minutos"> min</abbr></ion-label>
+                           </ion-col>
+                       
+                      </ion-row>
+                  </ion-grid>
+                
+        
+          </ion-item-divider>
+    </ion-item-group> 
+</ion-list>
+
+<!-- alerts  -->
+
+
+<div  class="alert alert-warning text-center mt-3 animated fadeIn faste">
+  <h4>No hay registros</h4>
+  <p>
+  <ion-icon name="warning"></ion-icon>
+  </p>
+  <p class="mb-0">
+  Espere por favor
+  </p>
+  </div>
+  
+  <!-- loader sencillo -->
+   <div  class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4>Cargando...</h4>
+    <p>
+        <ion-spinner name="crescent"></ion-spinner>
+    </p>
+    <p class="mb-0">
+      Espere por favor
+    </p>
+  </div> 
+</ion-content>
+

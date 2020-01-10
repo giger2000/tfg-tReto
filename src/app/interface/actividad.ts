@@ -1,9 +1,9 @@
-import { Athlete } from './athlete';
+
 
 export interface Actividad {
-
+    id?: string;
     name: string;
-    athlete: Athlete [];
+    athlete: string;
     distance: number;
     total_elevation_gain: number;
     type: string;

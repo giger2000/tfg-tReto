@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 // Firebase
-// import { AngularFirestore } from '@angular/fire/firestore';
-// import { UserService } from './../../services/user.service';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { UserService } from './../../services/user.service';
 import { AuthService } from './../../services/auth.service';
+import { ActivityService } from './../../services/activity.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 // import { Router } from '@angular/router';
-// import { Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { firestore } from 'firebase';
+import { UserModel } from 'src/app/interface/user.model';
+import { Actividad } from 'src/app/interface/actividad';
+
+
 // import { map } from 'rxjs/operators';
+
+// Ionic loading
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -14,30 +24,45 @@ import { AuthService } from './../../services/auth.service';
 })
 export class ProfilePage implements OnInit {
 
-  // userPosts;
-  // public userData: Observable<firebase.User>;
 
+
+  userRef: AngularFirestoreCollection<UserModel>;
+  activityRef: AngularFirestoreCollection<Actividad>;
+  user$: Observable<UserModel[]>;
+  actividad$: Observable<Actividad[]>;
+
+  // actividadesTotal;
+
+  cargando = false;
 
   constructor(
-              // private afs: AngularFirestore,
-              // private user: UserService,
-              public auth: AuthService
+              private afs: AngularFirestore,
+              public loadingController: LoadingController,
+              public act: ActivityService,
+              public auth: AuthService,
+              public user: UserService,
+              private afAuth: AngularFireAuth
                ) {
-                // const posts = afs.doc(`users/${user.getUID()}`);
-                // this.userPosts = posts.valueChanges();
-                // console.log('UID de usuario ', posts);
-                // this.mainuser = afs.doc(`users/${user.getUID()}`)
-                // const usuarioActual = this.afs.doc(`users/${this.user.getUID()}`);
-              
-                // this.userData = auth.userData;
+
+                this.cargando = true;
+
+                this.userRef = this.afs.collection('users');
+                this.user$ = this.userRef.valueChanges();
+
+                this.activityRef = this.afs.collection('users')
+                                  .doc(`${this.afAuth.auth.currentUser.uid}`)
+                                  .collection('activities');
+                this.actividad$ = this.activityRef.valueChanges();
+
+                
               }
 
-     // NUEVO
-  
-
   ngOnInit() {
-    console.log(this.auth.user$);
+    // this.cargando = false;
+    // console.log(this.act.getActivitiesCollection());
+    // console.log('actividades ',this.act.);
 
   }
+
 
 }

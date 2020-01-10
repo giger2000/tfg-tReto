@@ -5,6 +5,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NormasComponent } from './components/normas/normas.component';
 import { RetoComponent } from './components/reto/reto.component';
 
+import { ActivityComponent } from './components/activity/activity.component';
+import { UserActivityComponent } from './components/user-activity/user-activity.component';
+
+
 // Servicios
 
 import { AuthService } from './services/auth.service';
@@ -49,6 +53,14 @@ const routes: Routes = [
     path : 'reto', component: RetoComponent,
     canActivate: [AuthService]
   },
+  {
+    path : 'activity/:id', component: ActivityComponent,
+    canActivate: [AuthService]
+  },
+  {
+    path : 'user-activity', component: UserActivityComponent,
+    canActivate: [AuthService]
+  },
   // {
   //   path: 'tabs',
   //   loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
@@ -64,10 +76,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
     canActivate: [AuthService]
   }
-  // {
-  //   path: 'uploader',
-  //   loadChildren: () => import('./uploader/uploader.module').then( m => m.UploaderPageModule)
-  // }
+ 
 
 
 ];

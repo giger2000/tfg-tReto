@@ -27,6 +27,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
+
 // consumir datos externos
 import { HttpClientModule } from '@angular/common/http';
 
@@ -39,6 +40,8 @@ import { registerLocaleData } from '@angular/common';
 import { NormasComponent } from './components/normas/normas.component';
 import { NormaComponent } from './components/norma/norma.component';
 import { RetoComponent } from './components/reto/reto.component';
+import { ActivityComponent } from './components/activity/activity.component';
+import { UserActivityComponent } from './components/user-activity/user-activity.component';
 
 
 
@@ -53,6 +56,8 @@ registerLocaleData(localeEs, 'es');
   declarations: [AppComponent,
                   NormaComponent,
                   NormasComponent,
+                  ActivityComponent,
+                  UserActivityComponent,
                   RetoComponent
                   ],
   entryComponents: [],

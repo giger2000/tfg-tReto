@@ -12,8 +12,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 // Ionic loading
 import { LoadingController } from '@ionic/angular';
 
-import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faTrashAlt, faPencilAlt, faRunning, faBiking, faMountain, faHistory, faRoute } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+// import { faTrashAlt, faPencilAlt, faRunning, faBiking, faMountain, faHistory, faRoute } from '@fortawesome/free-solid-svg-icons';
 
 // Formularios
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
@@ -31,13 +31,13 @@ import { Platform } from '@ionic/angular';
 })
 export class NormasComponent implements OnInit {
   // Icono papelera
-  faTrash = faTrashAlt; // Borrar
-  faPencil = faPencilAlt; // Editar
+  // faTrash = faTrashAlt; // Borrar
+  // faPencil = faPencilAlt; // Editar
   // iconos deporte
   // faRunning = faRunning; // Running
-  faHistory = faHistory; // Tiempo
-  faMountain = faMountain; // Desnivel
-  faRoute = faRoute; // Distancia
+  // faHistory = faHistory; // Tiempo
+  // faMountain = faMountain; // Desnivel
+  // faRoute = faRoute; // Distancia
   // Para los cargadores de alertas iniciales
   cargando = false;
 
@@ -106,7 +106,6 @@ export class NormasComponent implements OnInit {
 
 
   ngOnInit() {
- 
     this.normas = this.normasService.listaNorma();
     this.cargando = false;
 
